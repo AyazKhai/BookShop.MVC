@@ -1,0 +1,166 @@
+﻿@model OrderInfo;
+<head>
+    <link rel="stylesheet" href="~/css/cart2.css" />
+    <link rel="stylesheet" href="~/css/order.css" />
+
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ShopUser> SignInManager
+@{
+
+    decimal totalprice = 0;
+    var isAuthenticated = SignInManager.IsSignedIn(User);
+}
+
+
+<head>
+
+
+    <link rel="stylesheet" href="~/css/register.css" asp-append-version="true">
+</head>
+@if (isAuthenticated)
+{
+    
+    <div class="wrapper_cart">
+
+        <div class="Shopping_cart">
+            <a> <img src="/img/svg/cart1.svg">Shopping Cart</a>
+
+        </div>
+        <div class="navi_bar">
+            <span class="step">
+                <div class="tracker">
+                    1. Cart / Panier
+                </div>
+            </span>
+            <span class="step active">
+                <div class="tracker">
+                    2. Shipping / Expedition
+                </div>
+            </span>
+            <span class="step">
+                <div class="tracker">
+                    3. Payment
+                </div>
+            </span>
+        </div>
+        <form asp-controller="Cart" asp-action="SubmitOrder">
+            <div class="produst_order">
+            
+                <div class="order">
+               
+                        <label asp-for="FirstName">Имя</label>
+                        <input asp-for="FirstName" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                        <label asp-for="LastName">Фамилия</label>
+                        <input asp-for="LastName" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+
+                        <label asp-for="Email">Email(для связи)</label>
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                        <label asp-for="ShippingMethod">Метод доставки</label>
+                        <select asp-for="ShippingMethod" id="shippingMethod" onchange="updateTotalPrice()" required>
+                            <option value="" disabled selected>Выберите способ доставки</option> <!-- Пустая опция по умолчанию -->
+                            <option value="Courier">Курьер</option>
+                            <option value="Online">Самовывоз</option>
+                        </select>
+                        <span asp-validation-for="ShippingMethod" class="text-danger"></span>
+
+                        <div id="addressField" style="display: none;">
+                            <label asp-for="Address">Адрес</label>
+                            <input asp-for="Address" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+
+                        <label asp-for="PaymentMethod">Метод оплаты</label>
+                        <select asp-for="PaymentMethod">
+                            <option value="Cash">Наличными</option>
+                            <option value="Debit">Онлайн</option>
+                        </select>
+
+                        <h3>Список товаров</h3>
+                        <div>
+                            @foreach (var item in Model.CartItems)
+                            {
+                                <p>@item.Title - @item.Quantity x @item.Price</p>
+                            }
+                        </div>
+
+                        <!-- Убираем из формы, но оставляем их для JS -->
+                        @* <input type="hidden" id="TotalPrice" value="@Model.TotalPrice" />
+                        <input type="hidden" id="shippingCost" value="0" /> *@
+
+                    
+                
+                </div>
+
+                <div class="final_pricer">
+                    <div class="summary-box">
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span id="finalSubtotal">@Model.TotalPrice€</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Shipping</span>
+                            <span id="finalShipping">0€</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Total</span>
+                            <span id="TotalPrice">@Model.TotalPrice€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Оформить заказ</button>
+        </form>
+    </div>
+}
+
+
+
+<script>
+    function updateTotalPrice() {
+        var shippingMethod = document.getElementById("shippingMethod").value;
+        var baseTotalPrice = parseFloat("@Model.TotalPrice");
+        var shippingCost = 0;
+
+        // Если выбран способ "Курьер"
+        if (shippingMethod === "Courier") {
+            // Если стоимость заказа меньше 500 евро, доставка стоит 15 евро
+            if (baseTotalPrice <= 500) {
+                shippingCost = 15;
+            }
+        }
+
+        // Обновляем видимые элементы с итогами
+        document.getElementById("finalShipping").textContent = shippingCost.toFixed(2) + "€";
+
+        var finalTotal = baseTotalPrice + shippingCost;
+        document.getElementById("TotalPrice").textContent = finalTotal.toFixed(2) + "€";
+    }
+
+    // Инициализация расчета при загрузке страницы
+    window.onload = function () {
+        updateTotalPrice();
+        toggleAddressField();
+    };
+
+    function toggleAddressField() {
+        var shippingMethod = document.getElementById("shippingMethod").value;
+        var addressField = document.getElementById("addressField");
+
+        // Если выбран способ "Курьер", показываем поле адреса, иначе скрываем
+        if (shippingMethod === "Courier") {
+            addressField.style.display = "block";
+        } else {
+            addressField.style.display = "none";
+        }
+    }
+
+    // Добавим обработчик события onchange для обновления состояния
+    document.getElementById("shippingMethod").addEventListener("change", toggleAddressField);
+</script>

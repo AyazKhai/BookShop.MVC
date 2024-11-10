@@ -1,0 +1,15 @@
+﻿table {
+    border-collapse: collapse; /* Ensures that borders are collapsed into a single border */
+    width: 100%; /* Optional: makes table take the full width of its container */
+}
+
+th, td {
+    border: 2px solid black; /* Adds a border around each cell */
+    padding: 8px; /* Adds some padding for better readability */
+    text-align: left; /* Align text to the left */
+}
+
+caption {
+    font-weight: bold; /* Makes the caption text bold */
+    margin-bottom: 5px; /* Adds space between caption and table */
+}

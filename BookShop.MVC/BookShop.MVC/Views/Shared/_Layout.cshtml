@@ -1,0 +1,438 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ShopUser> SignInManager
+@* @inject UserManager<IdentityUser> UserManager *@
+@inject UserManager<ShopUser> UserManager
+
+@{
+    var user = UserManager.GetUserAsync(User).Result;
+    var isAuthenticated = SignInManager.IsSignedIn(User);
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin");
+
+    var cart = Context.Session.GetCart(); // Используйте Context вместо HttpContext
+    var cartItemCount = cart?.Sum(item => item.Quantity) ?? 0;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookShop.MVC</title>
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+   @*  <link rel="stylesheet" href="~/BookShop.MVC.styles.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="~/js/script.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Подключаем jQuery -->
+    <script src="~/js/site.js"></script> <!-- Ваш собственный скрипт -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+</head>
+<body>
+    <header class="header">
+
+        <div class="wrapper_header">
+            <div class="top_header">
+                <nav class="header_info_nav">
+                    <button class="btn_green">PREPARE YOUR VISIT</button>
+                    <ul>
+                        <li><a href="/books">FAQS</a></li>
+                    </ul>
+                </nav>
+
+                <div class="top_header_search">
+                    <div class="header_search_input">
+                        <input type="text" placeholder="Search by title, author or ISBN">
+                    </div>
+                    <nav class="header_info_nav_cart_login">
+                        <ul>
+                            <!-- <li><a href="/cart">Cart</a></li> -->
+                            <li class="cart-item">
+                                <a asp-controller="Cart" asp-action="Index">
+                                    <img src="~/img/svg/cart1.svg" class="cart-icon">
+                                    @if (cartItemCount != null)
+                                    {
+                                        <span class="cart-count">@cartItemCount</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="cart-count">0</span>
+                                    }
+
+                                </a>
+                            </li>
+                            @if (isAuthenticated)
+                            {
+                                <li>@user.FirstName</li>
+                                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="btn_green">Logout</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <li><a asp-area="Identity" asp-page="/Account/Login">Sign In</a></li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="milk_color_container">
+            <div class="wrapper_header">
+                <div class="header_custom">
+                    <nav class="header_info_nav collapse-nav">
+                        <ul>
+                            <li><a href="/books">Books</a></li>
+                            <li><a href="/">Tote bags</a></li>
+                            <li><a href="/">Yearly Subscription</a></li>
+                            <li><a href="/">Gifts</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header_logo">
+                        <a href="/"><img src="/img/svg/logo-shak1.svg" alt="logo"></a>
+                    </div>
+                    <div class="header_info"></div>
+                    <nav class="header_info_nav collapse-nav">
+                        <ul>
+                            @if (isAuthenticated && isAdmin)
+                            {
+                                <li><a asp-controller="Administration" asp-action="Index">Administration</a></li>
+                            }
+                            <li><a href="/books">Podcasts</a></li>
+                            <li><a href="/">Events</a></li>
+                            <li><a href="/">History</a></li>
+                            <li><a href="/">Cafe</a></li>
+                            <li><a href="/">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        <div class="milk_color_container_adapt">
+            <div class="wrapper">
+                <div class="header_custom">
+                    <div class="burger-menu" onclick="toggleMenu()">
+                        ☰
+                    </div>
+                    <nav class="burger_info_nav">
+                        <span class="topper">
+                            <button class="close-button" onclick="toggleMenu()"></button>
+                            <div class="header_logo">
+                                <a href="/"><img src="/img/svg/logo-shak1.svg" alt="logo"></a>
+                            </div>
+                        </span>
+                        <nav class="header_info_nav">
+                            <button class="btn_green">PREPARE YOUR VISIT</button>
+                            <button class="btn_green">FAQS</button>
+
+                        </nav>
+
+                        <ul>
+                            <li><a href="/books">Books</a></li>
+                            <li><a href="/">Tote bags</a></li>
+                            <li><a href="/">Yearly Subscription</a></li>
+                            <li><a href="/">Gifts</a></li>
+                            @if (isAuthenticated && isAdmin)
+                            {
+                                <li><a asp-controller="Administration" asp-action="Index">Administration</a></li>
+                            }
+                            <li><a href="/books">Podcasts</a></li>
+                            <li><a href="/">Events</a></li>
+                            <li><a href="/">History</a></li>
+                            <li><a href="/">Cafe</a></li>
+                            <li><a href="/">Contact</a></li>
+                        </ul>
+
+                        <div class="burger_links">
+                            @if (isAuthenticated)
+                            {
+                                <li>@user.FirstName</li>
+                                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <button type="submit" class="btn_green">Logout</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <a  asp-area="Identity" asp-page="/Account/Login" class="btn_aviewall">Sign In</a>
+                            }
+                            <div class="footer_social">
+                                <a href="https://www.instagram.com/">
+                                    <div class="footer_social_inst"></div>
+                                </a>
+                                <a href="https://www.facebook.com/">
+                                    <div class="footer_social_facebook"></div>
+                                </a>
+                                <a href="https://www.twitter.com/">
+                                    <div class="footer_social_x"></div>
+                                </a>
+                                <a href="https://www.youtube.com/">
+                                    <div class="footer_social_youtube"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="header_logo">
+                        <a href="/"><img src="/img/svg/logo-shak1.svg" alt="logo"></a>
+                    </div>
+                    <nav class="header_info_nav">
+                        <ul>
+                            <!-- <li><a href="/cart">Cart</a></li> -->
+                           
+                            <li class="cart-item">
+                                <a asp-controller="Cart" asp-action="Index">
+                                    <img src="~/img/svg/cart1.svg" class="cart-icon">
+                                    @if (cartItemCount != null)
+                                    {
+                                        <span class="cart-count">@cartItemCount</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="cart-count">0</span>
+                                    }
+
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+        <div class="top_header_adapt">
+
+            <div class="top_header_search">
+                <div class="header_search_input">
+                    <input type="text" placeholder="Search by title, author or ISBN">
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+     @* <header class="header">
+
+         <div class="wrapper">
+             <div class="top_header">
+                 <nav class="header_info_nav">
+                     <button class="btn_addToCart">PREPARE YOUR VISIT</button>
+                     <ul>
+                         <li><a href="/books">FAQS</a></li>
+                     </ul>
+                 </nav>
+
+                 <div class="top_header_search">
+                     <div class="header_search_input">
+                         <input type="text" placeholder="Search by title, author or ISBN">
+                     </div>
+                     <nav class="header_info_nav">
+                         <ul>
+                             <!-- <li><a href="/cart">Cart</a></li> -->
+                             <li class="cart-item">
+                                 <a asp-controller="Cart" asp-action="Index">
+                                     <img  src="~/img/svg/cart1.svg" class="cart-icon">
+                                     @if (cartItemCount != null)
+                                     {
+                                         <span class="cart-count">@cartItemCount</span>
+                                     }
+                                     else
+                                     {
+                                         <span class="cart-count">0</span>
+                                     }
+
+                                 </a>
+                             </li>
+                             @if (isAuthenticated)
+                             {
+                                 <li>@user.FirstName</li>
+                                 <form  asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                     <button type="submit" class="btn_green">Logout</button>
+                                 </form>
+                             }
+                             else
+                             {
+                                 <li><a asp-area="Identity" asp-page="/Account/Login">Sign In</a></li>
+                             }
+                           
+                         </ul>
+                     </nav>
+                 </div>
+
+             </div>
+
+         </div>
+        
+         </ul>
+
+         <div class="milk_color_container">
+             <div class="wrapper">
+                 <div class="header_custom">
+                     <div class="header_info">
+                         <nav class="header_info_nav">
+                             <ul>
+                                 <li><a href="/books">Books</a></li>
+                                 <li><a href="/">Tote bags</a></li>
+                                 <li><a href="/">Yearly Subscription</a></li>
+                                 <li><a href="/">Tote bags</a></li>
+                                 <li><a href="/">Gifts</a></li>
+                             </ul>
+                         </nav>
+                     </div>
+                     <div class="header_logo">
+                         <a href="/"><img src="/img/svg/logo-shak1.svg" alt="logo"></a>
+                     </div>
+                     <div class="header_info"></div>
+                     <nav class="header_info_nav">
+                         <ul>
+                             @if (isAuthenticated && isAdmin)
+                             {
+                                 <li><a asp-controller="Administration" asp-action="Index">Administration</a></li>
+                             }
+                             <li><a href="/books">Podcasts</a></li>
+                             <li><a href="/">Events</a></li>
+                             <li><a href="/">History</a></li>
+                             <li><a href="/">Cafe</a></li>
+                             <li><a href="/">Contact</a></li>
+                         </ul>
+                     </nav>
+                 </div>
+             </div>
+
+         </div>
+         </div>
+
+     </header> *@
+   @*  <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookShop.MVC</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header> *@
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+   @*  <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - BookShop.MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer> *@
+    <footer>
+        <div class="header-footer">
+            <div class="category_card">
+                <img src="~/img/svg/secure.svg" alt="podcasts">
+                <p>Secure payment</p>
+            </div>
+            <div class="category_card">
+                <img src="~/img/svg/delivery.svg" alt="podcasts">
+                <p>Worldwide shipping</p>
+            </div>
+            <div class="category_card">
+                <img src="~/img/svg/collect.svg" alt="podcasts">
+                <p>Click & collect</p>
+            </div>
+            <div class="category_card">
+                <img src="~/img/svg/wrapping.svg" alt="podcasts">
+                <p>Gift wrapping & bookshop stampt</p>
+            </div>
+            <div class="category_card">
+                <img src="~/img/svg/independent.svg" alt="podcasts">
+                <p>Independent bookstore since 1951</p>
+            </div>
+        </div>
+
+        <div class="text_content">
+            <p>Shakespeare and Company</p>
+            <p>37 rue de la Bûcherie, 75005 Paris, France</p>
+        </div>
+        <div class="text_content">
+            <b>BOOKS</b>
+        </div>
+        <div class="text_content">
+            <p>Open from Monday to Saturday from 10:00 to 20:00</p>
+            <p>Sunday from 12:00 to 19:00</p>
+        </div>
+        <div class="text_content">
+            <b>Café</b>
+        </div>
+        <div class="text_content">
+            <p>Open from Monday to Wednesday from 9:30 to 19:00 </p>
+            <p>Thursday and Friday from 9:30 to 22:00</p>
+            <p>Saturday and Sunday from 9:30 to 20:00</p>
+        </div>
+        <div class="footer_social">
+            <a href="https://www.instagram.com/">
+                <div class="footer_social_inst"></div>
+            </a>
+            <a href="https://www.facebook.com/">
+                <div class="footer_social_facebook"></div>
+            </a>
+            <a href="https://www.twitter.com/">
+                <div class="footer_social_x"></div>
+            </a>
+            <a href="https://www.youtube.com/">
+                <div class="footer_social_youtube"></div>
+            </a>
+        </div>
+        <div class="links">
+            <div class="title_card">
+                <a href="#!">sell your books</a>
+            </div>
+            <div class="title_card">
+                <a href="#!">Working with us</a>
+            </div>
+            <div class="title_card">
+                <a href="#!">Tumblering</a>
+            </div>
+            <div class="title_card">
+                <a href="#!">Prepare your visit</a>
+            </div>
+        </div>
+        <p class="pictures">
+            <img src="~/img/logo-france-gov.png" id="logo1" alt="Logo 1">
+            <img src="~/img/logo-cnl.svg" id="logo2" alt="Logo 2">
+        </p>
+
+        <div class="footer-bottom">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Refunds</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Help</a>
+        </div>
+    </footer>
+   @*  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script> *@
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+
+</html>

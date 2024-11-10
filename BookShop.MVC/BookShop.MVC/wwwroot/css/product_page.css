@@ -1,0 +1,268 @@
+.book_container
+{
+    display: flex;
+}
+
+.product_page_container
+{
+    margin-top: 50px;
+}
+.product_page_container .wrapper
+{
+    display: flex;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+.buy_book
+{
+    margin-right: 50px;
+    display: flex; /* Включаем Flexbox */
+    justify-content: end;
+    align-items: flex-start;
+    width: 50%;
+}
+.buy_book .product
+{
+    width: 420px;
+    justify-content: end;
+}
+
+.about_book
+{
+    width: 50%;
+}
+.about_book .btn_addToCart
+{
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    width: 480px;
+    justify-content: end;
+}
+.about_book .description
+{
+    font-size: 25px;
+    width: 90%;
+    padding-right: 40px;
+}
+.about_book p
+{
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    width: 50%;
+    font-family: 'EB Garmond';
+    color: #555;
+}
+.about_book .title
+{
+    font-size: 45px;
+}
+.about_book  .author
+{
+    color: black;
+    font-size: 25px;
+}
+.about_book .price
+{
+   margin-top: 20px;
+   margin-bottom: 30px;
+}
+.about_book span
+{
+    font-family:'Swiss 721Bt-Medium';
+    font-size: 30px;
+    
+}
+.about_book table
+{
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-family:'Swiss 721Bt-Medium';   
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+}
+
+.about_book td, th {
+    padding-top: 3px;
+    text-align: left;
+}
+.category_title
+{
+    color: #555;
+    font-weight: 100;
+    font-family:'Swiss 721Bt-Medium';
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.category_title:hover
+{
+    text-decoration: underline;
+}
+
+.cursive
+{
+    font-style: italic;
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+
+.buy_thesame
+{
+    width: 100%;
+    max-height: 1500px;
+    background-color: rgb(240, 240, 234);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+.buy_author 
+{
+    font-size: 25px;
+    font-family:'Swiss 721Bt-Medium';
+    padding-top: 20px;
+    width: 60%;
+    justify-content: flex-start;
+}
+.books_collection
+{  justify-content: center;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+.books_collection
+{
+    width: 60%;
+    /* max-height: 1300px; */
+    align-items: center;
+}
+.books_collection .product
+{
+    flex-wrap: wrap;
+    padding: 30px;
+    width: 300px;
+    min-width: 260px;
+}
+
+
+@media (max-width: 992px) 
+{
+    .book_container
+    {
+        flex-wrap: wrap;
+        /* max-width: 1000px; */
+    }
+    .buy_book
+    {
+        display: block;
+        width: 100%;
+    }
+    .about_book
+    {
+        width: 100%;
+    }
+    .about_book .description {
+        font-size: 20px;
+        width: 100%;
+        padding-right:0px;
+    }
+
+    .books_collection
+    {
+        width: 80%;
+        max-height:fit-content;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .books_collection .product
+    {
+        padding: 5px;
+        width: 50%;
+        min-width: 150px;
+    }
+
+    .product_page_container .wrapper
+    {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .buy_book .product {
+        width: 40vw;
+        justify-content: end;
+        min-width: 170px;
+    }
+    .buy_thesame
+    {
+        min-width: 200px;
+        max-height: unset;
+    }
+
+
+
+
+    .about_book .title {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 35px;
+    }
+    .about_book .author {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: black;
+        font-size: 18px;
+    }
+    .category_title {
+        font-size: 15px;
+        padding-top: 5px; 
+         padding-bottom: 5px;
+    }
+    .about_book .price {
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+    .about_book .btn_addToCart {
+        font-size: 12px;
+        /* font-size: 2vw; */
+        width: 40vw;
+        min-width: 170px;
+    }
+
+    .buy_thesame .btn_addToCart
+    {
+        font-size: 10px;
+        /* font-size: 2vw; */
+        width: 40vw;
+        min-width: 170px;
+    }
+    .about_book p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 18px;
+        width: 100%; 
+        color: #555;
+    }
+    .cursive {
+        font-size: 15px;
+        font-style: italic;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    
+    .product-container
+    {
+        width: 100%;
+    }
+}

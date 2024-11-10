@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ShopUser> SignInManager
+@* @inject UserManager<IdentityUser> UserManager *@
+@inject UserManager<ShopUser> UserManager
+
+@{
+    var user = UserManager.GetUserAsync(User).Result;
+    var isAuthenticated = SignInManager.IsSignedIn(User);
+    var isAdmin = user != null && await UserManager.IsInRoleAsync(user, "Admin");
+    var isGod = user != null && await UserManager.IsInRoleAsync(user, "God");
+}
+
+
+@if (isAuthenticated && isAdmin)
+{
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AdminPanel</title>
+        @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+        @*  <link rel="stylesheet" href="~/BookShop.MVC.styles.css" asp-append-version="true" /> *@
+        <link rel="stylesheet" href="~/css/style.css" />
+       
+    </head>
+
+    <div class="wrapper">
+        <div>
+            <a asp-controller="Administration" asp-action="AddBook" class="btn_green">Add Book</a>
+            <a asp-controller="Administration" asp-action="AddAuthor" class="btn_green">Add Author</a>
+            <a asp-controller="Administration" asp-action="AddGenre" class="btn_green">Add Genre</a>
+            <a asp-controller="Administration" asp-action="SalesHistory" class="btn_green">Watch sales History</a>
+            @if (isGod)
+            {
+                <a asp-controller="Administration" asp-action="AssignAdminRoleIndex" class="btn_green">Give admin</a>
+            }
+        </div>
+    </div>
+    
+
+}
+else
+{
+    <li><a asp-area="Identity" asp-page="/Account/Login">Sign In</a></li>
+}

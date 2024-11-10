@@ -1,0 +1,52 @@
+.order {
+    display: flex;
+    flex-direction: column; /* Чтобы поля ввода располагались друг под другом */
+    width: 100%;
+    width: 866.66px;
+}
+
+/* Стиль для кнопки */
+button[type="submit"] {
+    width: 50%; /* Задаем ширину кнопки */
+    background-color: #00635d;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Swiss 721Bt-Medium';
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 20px auto; /* Центрируем кнопку */
+    display: block;
+}
+
+    button[type="submit"]:hover {
+        background-color: #004c45;
+    }
+
+/* Стили для форм и полей */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+    form input, form select {
+        width: 100%; /* Чтобы поля ввода и select занимали всю ширину */
+        padding: 2px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        background-color: #f0f0f0;
+    }
+
+    form label {
+        font-size: 14px;
+    }
+
+/* Стиль для вывода ошибок */
+.text-danger {
+    font-size: 12px;
+    color: red;
+}

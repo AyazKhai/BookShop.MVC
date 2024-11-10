@@ -1,0 +1,223 @@
+﻿@using System.Globalization
+
+@{
+    ViewData["Title"] = "Shakespeare and Company";
+    Book[]? books = ViewData["books"] as Book[];
+    Genre[]? genres = ViewData["genres"] as Genre[];
+    int counter = 0;
+    string authorsDisplay="";
+    string image = "";
+
+    int? genreid = ViewData["genreid"] as int?;
+}
+
+@{
+    
+}
+<head>
+    <link rel="stylesheet" href="~/css/allbooks.css" />
+</head>
+
+@if ((books is null) || (!books.Any()))
+{
+    <h2>No books werefound. Try later.</h2>
+    <p>Sorry for the inconvenience</p>
+}
+else
+{
+
+<div class="wrapper_cart">
+            <div class="allbooks">
+            
+                <div class="wrap_container"  id = "wrap_container_left">
+                    <div class="section_label">
+                        <p id = "Search-label">Search</p>
+        
+                    </div>
+                </div>
+                <div class="wrap_container">
+                    <div class="section_label">
+                        <p id = "Search-label">Search</p>
+
+                    </div>
+                    <div>
+                   @*  <label asp-for="Bookgenres">Genres</label> *@
+                    <form asp-action="Index" enctype="multipart/form-data" >
+                        <select name="order" class="form-control">
+                             <option >Choose</option>
+                                <option value="asc">Asc</option>
+                                <option value="desc">Desc</option>
+               
+                        </select>
+                        <select name="sortname" class="form-control">
+                            <option >Choose</option>
+                               <option value="title">Title</option>
+                               <option value="price">Price</option>
+                           </select>
+                    <input type="hidden" name="genreid" value="@(genreid.HasValue ? genreid.ToString() : string.Empty)" />
+                    <button type="submit" class="btn_green">Sort</button>
+                    </form>
+                </div>
+                </div>
+                <div class="wrap_container">
+                <div class="lef_section_adapt">
+                    <p>CATEGORY</p>
+                    <select class="custom-select" id="genre-select">
+                        @foreach (var genre in genres)
+                        {
+                            <option value="@Url.Action("Index", new { genreid = genre.GenreId })">
+                                @genre.GenresName
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                <script>
+                    document.getElementById('genre-select').addEventListener('change', function () {
+                        var selectedUrl = this.value;
+                        if (selectedUrl) {
+                            window.location.href = selectedUrl;
+                        }
+                    });
+                </script>
+                    <div class="lef_section">
+
+                        <div class="header_name">
+                            <p>Section</p>
+                        </div>
+                        <div class="filter-section">
+                             <div class="filter-category">
+                                 <ul>
+                                        @foreach (var genre in genres)
+                                        {
+                                        
+                                               <li>
+                                                    <a asp-action="Index" asp-route-genreid="@genre.GenreId">
+                                                        <label>@genre.GenresName</label>
+                                                    </a>
+                                                </li>
+                                        }
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="right_section">
+                        <div class="searh_bar">
+                            <input type="text" placeholder="Search by title, author or ISBN">
+                            
+                        </div>
+                        <div class="products_list">
+                            <div class="product-box">
+                                @if (books == null || !books.Any())
+                                {
+                                    <p>No books were found. Try later.</p>
+                                    <h2>Sorry for the inconvenience</h2>
+                                }
+                                else
+                                {
+                                    foreach (var book in books)
+                                    {
+                                        var dataAttributes = new Dictionary<string, string>
+                                        {
+                                        { "data-book-id", book.BookId.ToString() },
+                                        { "data-book-title", book.Title },
+                                        { "data-price", book.Price.ToString(CultureInfo.InvariantCulture) },
+                                        { "data-author-name", " " },
+                                        { "data-image-str", "book-placeholder.webp"}
+                                        };
+                                        <div class="product">
+
+                                           
+
+                                             <div class="product-container">
+                        
+                                                @if (book.Imagelinks != null)
+                                                {
+                                                    if (book.Imagelinks[0].Size == 1)
+                                                    {
+                                                            <img src="@Url.Content("~/img/boksCards/" + book.Imagelinks[0].Url)" alt="Product Background" class="product-background-image" />
+                                                    @* <img src="@($"./img/boksCards/{book.Imagelinks[0].Url}")" alt="Product Background" class="product-background-image"> *@
+                                                        dataAttributes["data-image-str"] = book.Imagelinks[0].Url;
+                                                    }
+                                                    else
+                                                    {
+                                                            <img src="~/img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                                                            <img src="@Url.Content("~/img/boksCards/" + book.Imagelinks[0].Url)" alt="Product Image" class="product-image" />
+                                                            @* <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                                                    <img src="@($"./img/boksCards/{book.Imagelinks[0].Url}")" alt="Product Image" class="product-image"> *@
+                                                            dataAttributes["data-image-str"] = book.Imagelinks[0].Url;
+                                                    }
+                            
+                                                }
+                                                else
+                                                {
+                                                        <img src="@Url.Content("~/img/boksCards/background.svg")" alt="Product Background" class="product-background-image" />
+                                                    <img src="@Url.Content("~/img/boksCards/book-placeholder.webp")" alt="Product Image" class="product-image" />
+                                                }
+                                            </div>
+                                            <div class="title" >
+                                                <a asp-controller="Books" asp-action="BookPage"  data-book-title="@book.Title"  asp-route-id="@book.BookId">@book.Title</a>
+                                            </div>
+                                            <div class="author">
+                                                @if (book.Authors != null)
+                                                {
+                                                     string name = string.Empty;
+                                                    foreach (var auth in book.Authors)
+                                                    {
+                                                         if (auth != null) // Проверяем, что объект автора не равен null
+                                                        {
+                                                            var firstName = auth.FirstName ?? string.Empty; // Проверяем, что FirstName не равен null
+                                                            var lastName = auth.LastName ?? string.Empty; // Проверяем, что LastName не равен null
+
+                                                            // Создаем ссылку на автора
+                                                            <a asp-area="" asp-controller="Books" asp-action="AuthorPage" asp-route-id="@auth.AuthorId" asp-route-name="@($"{firstName} {lastName}")">
+                                                                @($"{firstName} {lastName}")
+                                                            </a>
+
+                                                            // Добавляем имя автора в строку
+                                                            if (!string.IsNullOrEmpty(name))
+                                                            {
+                                                                name += ", "; // Добавляем запятую перед следующим именем, если имя уже не пустое
+                                                            }
+                                                            name += $"{firstName} {lastName}"; // Добавляем имя автора
+                                                        }
+                                                    }
+                                                     dataAttributes["data-author-name"] = name.ToString();
+
+                                                }
+                                                else
+                                                {
+                                                    <a ></a>
+                                                }
+
+                                             </div>
+                                              <span>@book.Price €</span>
+                                             <button class="btn_addToCart" 
+                                                 data-book-id ="@dataAttributes["data-book-id"]"
+                                                 data-book-title="@dataAttributes["data-book-title"]" 
+                                                 data-price ="@dataAttributes["data-price"]" 
+                                                 data-author-name ="@dataAttributes["data-author-name"]" 
+                                                 data-image-str="@dataAttributes["data-image-str"]">
+                                                <img src="~/img/svg/cart 2.svg">ADD TO CART
+                                            </button>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                           
+                        </div>
+                         <div class="pagination">
+                        <button class="page-btn">&lt;</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">4</button>
+                        <button class="page-btn">&gt;</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}

@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+   
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/cart2.css" />
+
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+<div class="wrapper_cart">
+
+    <div class="Shopping_cart">
+        <a> <img src="/img/svg/cart1.svg">Shopping Cart</a>
+
+    </div>
+    <div class="navi_bar">
+        <span class="step">
+            <div class="tracker">
+                1. Cart / Panier
+            </div>
+        </span>
+        <span class="step">
+            <div class="tracker">
+                2. Shipping / Expedition
+            </div>
+        </span>
+        <span class="step active">
+            <div class="tracker">
+                3. Payment
+            </div>
+        </span>
+    </div>
+</div>
+@if (TempData["SuccessMessage"] != null)
+{
+    
+        <div style="padding: 20px; text-align: center; font-size: 20px">
+            <strong>@TempData["SuccessMessage"]</strong>
+        </div>
+   
+}
+else{
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div style="padding: 20px; text-align: center; font-size: 20px">
+            <strong>@TempData["ErrorMessage"]</strong>
+        </div>
+
+    }
+}
+

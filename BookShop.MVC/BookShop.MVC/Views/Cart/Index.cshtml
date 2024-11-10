@@ -1,0 +1,186 @@
+﻿@model List<CartItem>
+<head>
+    <link rel="stylesheet" href="~/css/cart2.css" />
+</head>
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ShopUser> SignInManager
+@{
+
+    decimal totalprice = 0;
+    var isAuthenticated = SignInManager.IsSignedIn(User);
+}
+
+ @* <div class="wrapper">
+
+     <h2>Cart</h2>
+     @foreach (var item in Model)
+     {
+         <p>@item.ProductId  @item.Title @item.Price @item.Quantity @item.AuthorName  @item.ProductId @item.ImageStr</p>
+         <form asp-action="RemoveFromCart" method="post" style="display:inline;">
+             <input type="hidden" name="productId" value="@item.ProductId" />
+             <button class="btn btn-danger btn-remove" data-product-id="@item.ProductId">Удалить</button>
+         </form>
+     }
+
+     <!-- Кнопка очистки всей корзины -->
+     <form id="clearCartForm" asp-action="ClearCart" method="post">
+         <button type="button" class="btn btn-warning" id="clearCartBtn">Очистить всю корзину</button>
+     </form>
+ </div> *@
+
+
+<div class="wrapper_cart">
+    <div class="Shopping_cart">
+        <a> <img src="/img/svg/cart1.svg">Shopping Cart</a>
+
+    </div>
+    <div class="navi_bar">
+        <span class="step active">
+            <div class="tracker">
+                1. Cart / Panier
+            </div>
+        </span>
+        <span class="step">
+            <div class="tracker">
+                2. Shipping / Expedition
+            </div>
+        </span>
+        <span class="step">
+            <div class="tracker">
+                3. Payment
+            </div>
+        </span>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div style="padding: 20px; text-align: center; font-size: 20px">
+            <strong>Your Cart is empty.</strong>
+        </div>
+    }
+    else
+    {
+
+        <div class="produst_order">
+            <div class="books_collection">
+                @foreach (var item in Model)
+                {
+                    <div class="book_cart">
+                        <div class="book_info">
+                            <div class="item-info">
+                                @if (!string.IsNullOrEmpty(item.ImageStr))
+                                {
+                                    <img src="@Url.Content("./img/boksCards/" + item.ImageStr)" alt="Product Image" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/img/boksCards/book-placeholder.webp")" alt="Product Image" />
+                                }
+                                <div class="item-details">
+                                    <h2>@item.Title</h2>
+                                    <p>@item.AuthorName</p>
+                                </div>
+
+                            </div>
+                            <button class="delete_button btn-danger btn-remove" data-product-id="@item.ProductId"> X </button>
+                        </div>
+                        <div class="item-options">
+                            <div class="option-details">
+                                <div class="price">
+                                    <p>Price</p>
+                                    <div id="price-@item.ProductId">@item.Price€</div>
+
+                                </div>
+                                <div class="quantity">
+                                    <p>Quantity</p>
+                                    <div class="quantitybtn">
+                                        <button class="btn-update-quantity btn-decrease" data-product-id="@item.ProductId">-</button>
+                                        <span id="quantity-@item.ProductId">@item.Quantity</span>
+                                        <button class="btn-update-quantity btn-increase" data-product-id="@item.ProductId">+</button>
+                                    </div>
+                                </div>
+                                <div class="total">
+                                    <p>Total</p>
+                                    @{
+                                        totalprice += item.Price * item.Quantity ;
+                                    }
+                                    <div id="total-@item.ProductId">@($"{(item.Price * item.Quantity):F2}€")</div>
+                                </div>
+                            </div>
+                            <div class="item-extra">
+                                <label>
+                                    <input type="checkbox" data-option="isWrapped"
+                                    @(item.isWrapped ? "checked" : "")> I would like my item gift-wrapped
+                                </label>
+                                <label>
+                                    <input type="checkbox" data-option="isStamped"
+                                    @(item.isStamped ? "checked" : "")> I would like my item stamped
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="order-message-container" id="order-message-container-adapt">
+                    <div class="order_message">
+                        <p>Order message</p>
+                    </div>
+                    <div class="message">
+                        <textarea id="messageInput" placeholder="Введите сообщение..."></textarea>
+                        <div class="char-counter" id="charCounter">0/150</div>
+                    </div>
+                </div>
+            </div>
+            <div class="final_pricer">
+                <div class="summary-box">
+                    <div class="summary-line">
+                        <span>Subtotal</span>
+                        <span class="subtotal-amount">@(totalprice)€</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Shipping</span>
+                        <span>TBC</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Total</span>
+                        <span>TBC</span>
+                    </div>
+                </div>
+                <p class="tax-note">Tax & Shipping Will Be Calculated At Checkout</p>
+                <div class="proceed_to_check">
+                    @if (isAuthenticated)
+                    {
+
+                        <a class="btn_green" asp-controller="Cart" asp-action="Order">Proceed to Payment</a>
+                    }
+                    else
+                    {
+                        <a class="btn_green" asp-area="Identity" asp-page="/Account/Login">Proceed to Payment</a>
+                    }
+                    
+
+                </div>
+                <div class="payment-icons">
+                    <img src="/img/payment-cb.webp" alt="Visa">
+                    <img src="/img/payment-visa.svg" alt="Visa">
+                    <img src="/img/payment-mastercard.svg" alt="Mastercard">
+                    <img src="/img/payment-amex.svg" alt="Amex">
+                </div>
+
+            </div>
+        </div>
+        @* <div class="order-message-container">
+            <div class="order_message">
+                <p>Order message</p>
+            </div>
+            <div class="message">
+                <textarea id="messageInput" placeholder="Введите сообщение..."></textarea>
+                <div class="char-counter" id="charCounter">0/150</div>
+            </div>
+        </div> *@
+    }
+    
+</div>
+
+
+

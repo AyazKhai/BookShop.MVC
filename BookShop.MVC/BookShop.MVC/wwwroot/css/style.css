@@ -1,0 +1,1205 @@
+@font-face {
+    font-family: 'Swiss 721Bt-Medium'; /* Имя шрифта */
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/NormalSwiss721Bt/Swiss721BT-Medium.ttf') format('truetype'), url('/fonts/NormalSwiss721Bt/Swiss721BT-Medium.woff2') format('woff2'), url('/fonts/NormalSwiss721Bt/Swiss721BT-Medium.woff') format('woff'); /* Путь к файлу шрифта и формат */
+}
+
+@font-face {
+    font-family: 'EB Garmond';
+    font-style: normal;
+    font-weight: 500;
+    src: url(/fonts/eb-garamond-v30-latin/eb-garamond-v30-latin-500.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'EB Garmond';
+    font-style: normal;
+    font-weight: 700;
+    src: url(/fonts/eb-garamond-v30-latin/eb-garamond-v30-latin-700.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'EB Garmond';
+    font-style: italic;
+    font-weight: 700;
+    src: url(/fonts/eb-garamond-v30-latin/eb-garamond-v30-latin-italic.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'EB Garmond';
+    font-style: regular;
+    font-weight: 500;
+    src: url(/fonts/eb-garamond-v30-latin/eb-garamond-v30-latin-regular.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Windsor E1';
+    font-style: normal;
+    font-weight: 500;
+    src: url(/fonts/windsor-elongated/WindsorElongated.ttf) format('truetype');
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family:'Swiss 721Bt-Medium'; */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style-type: none;
+}
+
+.wrapper {
+    max-width: 1560vm;
+    width: 100%;
+    margin: 0 15px;
+}
+
+.wrapper_header {
+    max-width: 1560vm;
+    width: unset;
+    margin: 0 15px;
+}
+
+#Independent_Bookstore {
+    font-size: 25px;
+    font-family: 'EB Garmond';
+}
+
+.header {
+    background-color: rgb(240, 240, 234);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Swiss 721Bt-Medium';
+    text-transform: uppercase;
+}
+
+
+.top_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    flex-direction: row;
+}
+
+.top_header_search {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.header_search_input {
+    position: relative;
+    width: 80%;
+}
+
+    .header_search_input input {
+        width: 100%;
+        padding: 12px;
+        background-color: white;
+        border: 1px solid #000;
+        /* padding: 10px,16px; */
+    }
+
+.header_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.header_info_nav {
+    /* flex-wrap: wrap; */
+    display: flex; /* Применяем Flexbox к контейнеру nav */
+    align-items: center; /* Выровнять элементы по вертикали */
+    gap: 32vm; /* Отступ между элементами */
+}
+
+    .header_info_nav ul {
+        flex-wrap: wrap;
+        font-size: 14px;
+        line-height: 18px;
+        display: flex;
+        gap: 32px;
+        padding: 16px 0;
+        list-style: none; /* Убираем маркеры списка */
+    }
+
+        .header_info_nav ul a:hover {
+            text-decoration: underline;
+            transition: 0.2s ease-in;
+        }
+
+.header_info_nav_cart_login ul {
+    /* flex-wrap: wrap; */
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    gap: 32px;
+    padding: 16px 0;
+    list-style: none; /* Убираем маркеры списка */
+}
+
+.cart-item {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-icon {
+    width: 32px; /* Задайте размер иконки по вашему усмотрению */
+    height: 32px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px; /* Позиционирование счётчика относительно иконки */
+    right: -8px;
+    background-color: black;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.milk_color_container {
+    background-color: white
+}
+
+.header_custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+    .header_custom .header_info_nav {
+        flex: 1;
+    }
+
+    .header_custom nav.header_info_nav:first-of-type {
+        justify-content: flex-start;
+    }
+
+    .header_custom nav.header_info_nav:last-of-type {
+        justify-content: flex-end;
+    }
+
+    .header_custom .header_logo {
+        flex: 0 1 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+
+
+.start_addv {
+    background-color: white;
+    font-family: 'Swiss 721Bt-Medium';
+}
+
+.store_label {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 0;
+}
+
+
+.slider-container {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    height: 500px; /* Задайте фиксированную высоту по вашему усмотрению */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease; /* Плавное перемещение */
+}
+
+    .slider img {
+        height: 100%;
+        width: 100%; /* Обеспечивает заполнение контейнера по высоте */
+        object-fit: cover; /* Обрезка изображения для сохранения пропорций */
+    }
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(128, 128, 128, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+    button.prev:hover, button.next:hover {
+        background-color: rgba(128, 128, 128, 0.7);
+    }
+
+
+.products {
+    background-color: rgb(240, 240, 234);
+    display: flex;
+}
+
+    .products .wrapper {
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 10px;
+        padding-bottom: 40px;
+    }
+
+.product-box {
+    display: flex; /* Устанавливаем флекс-контейнер */
+    /* width: 100%;                  Устанавливаем ширину для блока */
+    /* flex-wrap: wrap;             Позволяет элементам переноситься на новую строку */
+    /*padding: 20px 0;            /* Отступы сверху и снизу */
+    gap: 40px;
+    /* justify-content: start;  */
+    justify-content: space-between;
+    /* position: relative;
+    display:flex;
+    
+    align-items: center;*/
+}
+
+.product-box-1 {
+    display: flex; /* Устанавливаем флекс-контейнер */
+    /* width: 100%;                  Устанавливаем ширину для блока */
+    /* flex-wrap: wrap;             Позволяет элементам переноситься на новую строку */
+    /*padding: 20px 0;            /* Отступы сверху и снизу */
+    gap: 40px;
+    /* justify-content: start;  */
+    justify-content: space-between;
+    /* position: relative;
+    display:flex;
+    
+    align-items: center;*/
+}
+
+    .product-box-1 .product {
+        max-width: 370px;
+    }
+
+.product {
+    max-width: 325px;
+    width: 100%;
+    border: 2px solid transparent;
+    /*border-radius: 5px;  Скругленные углы */
+    overflow: hidden; /* Скрывает все, что выходит за пределы карточки */
+    text-align: center; /* Центрирование содержимого */
+    /*font-family: Arial, sans-serif;*/
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+    display: flex; /* Используем Flexbox */
+    flex-direction: column; /* Размещаем элементы вертикально */
+    justify-content: space-between; /* Равномерное распределение элементов */
+    text-align: start;
+}
+
+    .product span {
+        padding-bottom: 10px;
+        font-family: 'Swiss 721Bt-Medium';
+        font-weight: 500;
+    }
+
+#nonwidth {
+    width: unset;
+}
+
+
+.author, .title {
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* white-space: nowrap; */
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.author {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-family: "EB Garmond";
+    color: #555;
+    text-align: left;
+    width: 100%; /* adjust the width to your needs */
+}
+
+.title {
+    font-family: "EB Garmond";
+    font-size: 20px;
+    width: 100%; /* adjust the width to your needs */
+}
+
+    .author a:hover, .title:hover {
+        text-decoration: underline;
+        transition: 0.2s ease-in;
+    }
+
+.btn_addToCart {
+    margin-top: 5px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #00635d;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #eee;
+    transition: background-color 0.3s;
+    /* Add the following styles to center the icon and text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Swiss 721Bt-Medium';
+}
+
+    .btn_addToCart img {
+        padding-right: 10px;
+        /* Add the following style to make the icon inline with the text */
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .btn_addToCart:hover {
+        text-decoration: none;
+        background-color: #004c45;
+    }
+
+.product-container {
+    position: relative; /* create a containing block */
+}
+
+.product-background-image {
+    width: 100%; /* make the background image full width */
+    height: auto;
+    display: block; /* Убираем отступы в случае, если это img */ /* Выровнять по верхней границе */
+}
+
+.product-image {
+    position: absolute; /* position the product image on top of the background */
+    top: 60%; /* center vertically */
+    left: 50%; /* center horizontally */
+    transform: translate(-50%, -50%); /* adjust for centering */
+    z-index: 1; /* ensure the product image is on top */
+    width: 54%; /* make the product image adaptive width (80% of parent) */
+    height: auto; /* maintain aspect ratio */
+    max-width: 100%; /* prevent image from exceeding parent width */
+}
+
+.category {
+    height: 140px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: 'Swiss 721Bt-Medium';
+}
+
+    .category a {
+        max-width: 50%;
+        text-align: center;
+        /* display: flex;  */
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .category img {
+        max-width: 150px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+    }
+
+.quote {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f4d55d;
+    text-align: center;
+    position: relative;
+}
+
+    .quote .quote_text {
+        font-size: 5.5vw;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Windsor E1';
+    }
+
+    .quote a {
+        font-size: 1.5vw;
+        color: #555;
+        flex-direction: column;
+        margin-top: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: 'Windsor E1';
+    }
+
+/* .quote p
+{
+
+flex-direction: column; 
+margin-top: 10px;
+text-transform: uppercase;
+font-weight: bold;
+letter-spacing: 1px;
+} */
+
+
+.products_viewall {
+    background-color: white;
+    display: flex;
+}
+
+    .products_viewall .wrapper {
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .products_viewall .product {
+        max-width: none;
+    }
+
+.Big-product-background-image {
+    width: 100%; /* make the background image full width */
+    height: auto;
+}
+
+.Big-product-image {
+    position: absolute; /* position the product image on top of the background */
+    top: 60%; /* center vertically */
+    left: 50%; /* center horizontally */
+    transform: translate(-50%, -50%); /* adjust for centering */
+    z-index: 1; /* ensure the product image is on top */
+    width: 55%; /* make the product image adaptive width (80% of parent) */
+    height: auto; /* maintain aspect ratio */
+    max-width: 100%;
+}
+
+.btn_aviewall {
+    margin-top: 5px;
+    text-align: center;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: transparent;
+    color: black;
+    text-decoration: none;
+    border: 1px solid black;
+    transition: background-color 0.1s;
+    /* Add the following styles to center the icon and text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    .btn_aviewall:hover {
+        text-decoration: none;
+        color: white;
+        background-color: #004c45;
+    }
+
+.product-container {
+    position: relative; /* create a containing block */
+}
+
+.viewall_container {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+/* Общие стили для макета */
+.yearOfreading {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.container_add {
+    min-width: 400px;
+    width: 50%; /* Каждая секция занимает половину экрана */
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+}
+/* Стили для первой секции (newsletter) */
+.newsletter-section {
+    background-color: #d5a200; /* Жёлтый фон */
+    color: black;
+}
+/* Стили для второй секции (year of reading) */
+.year-section {
+    background-color: #134a44; /* Тёмно-зелёный фон */
+    color: white;
+}
+/* Стили для текста */
+.theme {
+    font-family: "Windsor E1";
+    /*font-size: 10vw;  Шрифт, который адаптируется к ширине экрана (2% ширины окна) */
+    max-width: 900px;
+    max-height: 300px;
+    font-size: clamp(60px, 5vw, 150px);
+    overflow: hidden;
+}
+
+.subtitle {
+    font-family: "EB Garmond";
+    padding: 5px;
+}
+
+.description {
+    padding-bottom: 10px;
+    font-family: "EB Garmond";
+    text-align: left;
+}
+
+.newsletter-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    .newsletter-form input {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid black;
+        width: 40%;
+        background-color: #d5a200;
+    }
+
+    .newsletter-form button {
+        padding: 10px 20px;
+        background-color: transparent;
+        border: 2px solid black;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin: auto;
+    }
+
+        .newsletter-form button:hover {
+            background-color: black;
+            color: white;
+        }
+
+.details-button {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.year-section .details-button:hover {
+    background-color: white;
+    color: #134a44;
+}
+
+
+.add_container {
+    display: flex;
+    /* justify-content:center; */
+}
+
+.bg_green {
+    width: 50%; /* Половина ширины экрана */
+    background-color: #134a44; /* Зелёный фон */
+    display: flex; /* Включаем Flexbox */
+    justify-content: end; /* Все элементы внутри блока выравниваются по правому краю */
+    align-items: center; /* Опционально: центрируем элементы по вертикали */
+    color: white;
+}
+
+.bg_salmon {
+    width: 50%; /* Половина ширины экрана */
+    background-color: #EF7352; /* Зелёный фон */
+    display: flex; /* Включаем Flexbox */
+    justify-content: start; /* Все элементы внутри блока выравниваются по правому краю */
+
+    color: white;
+}
+
+.content-left {
+    padding-left: 30px;
+    max-width: 732.5px;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-bottom: 30px;
+}
+
+.content-right {
+    padding-left: 30px;
+    max-width: 732.5px;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-bottom: 30px;
+}
+
+
+
+.event_card {
+    font-size: 27px;
+    font-family: 'EB Garmond';
+    display: flex;
+    padding-top: 20px;
+    margin-right: 30px;
+}
+
+    .event_card img {
+        max-width: 185px;
+        padding-left: 10px;
+    }
+/* .event_card .product
+{
+    width: 100%;
+} */
+.bald-text {
+    margin-top: 20px; /* Увеличивает пространство между абзацами */
+    font-weight: 700;
+    font-family: 'EB Garmond';
+    margin-bottom: 20px;
+}
+
+.description {
+    font-family: 'EB Garmond';
+}
+
+.title_card {
+    margin-bottom: 20px;
+}
+
+    .title_card a {
+        font-size: 30px;
+        font-weight: 500;
+        font-family: 'EB Garmond';
+    }
+
+    .title_card:hover {
+        text-decoration: underline;
+    }
+
+.category_card {
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'EB Garmond';
+    letter-spacing: 2.5px;
+}
+
+    .category_card img {
+        padding-top: 10px;
+        /* max-width: 20vw; */
+        max-width: calc(120px + 1vw);
+        /* padding-top: calc(20px + 1vw);
+    padding-bottom: calc(20px + 1vw); */
+        padding-right: calc(10px + 1vw);
+        ;
+    }
+
+.line {
+    height: 2px;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.btn_event_card {
+    color: white;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+    .btn_event_card:hover {
+        background-color: white;
+        color: black;
+    }
+
+
+.content-right .event_card img {
+    max-width: 250px;
+    padding-right: 30px;
+    margin-bottom: 30px;
+}
+
+
+.history_container {
+    justify-content: center;
+    background-color: rgb(240, 240, 234);
+}
+
+    .history_container .wrapper {
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+.image_history img {
+    max-width: 100%;
+}
+
+.quote_history {
+    font-family: 'EB Garmond';
+    font-size: 34px;
+    width: 670px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.book_description {
+    display: flex;
+    padding-top: 20px;
+    margin-right: 30px;
+}
+
+.krista_halverson {
+    background-color: rgb(240, 240, 234);
+}
+
+    .krista_halverson .wrapper {
+        display: flex;
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 10px;
+        padding-bottom: 40px;
+    }
+
+    .krista_halverson .book_container {
+        display: flex; /* Включаем Flexbox */
+        justify-content: center;
+        align-items: flex-start;
+        width: 50%;
+    }
+
+    .krista_halverson .product {
+        /* width: 325px; */
+        justify-content: end;
+    }
+
+.description_container {
+    max-width: 50%;
+    padding-right: 40px;
+}
+
+    .description_container .description {
+        font-size: 25px;
+    }
+
+
+
+
+.collapse-nav {
+    display: flex;
+}
+
+
+
+.milk_color_container_adapt {
+    display: none;
+}
+
+    .milk_color_container_adapt .header_custom {
+        display: flex; /* Убедитесь, что flex включен */
+        justify-content: center; /* Центрируем содержимое по горизонтали */
+        align-items: center; /* Центрируем содержимое по вертикали */
+        height: 100%; /* Это означает, что по высоте все будет центроваться */
+    }
+
+.top_header_adapt {
+    display: none;
+}
+
+.milk_color_container_adapt .header_custom .header_logo {
+    width: 100%;
+    flex-grow: 1; /* Позволяет логотипу занимать всё доступное пространство */
+    display: flex;
+    justify-content: center; /* Центрируем логотип внутри контейнера */
+    align-items: center; /* Центрируем логотип по вертикали */
+}
+
+
+/* Медиа-запросы для адаптивного поведения */
+.burger-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.burger_info_nav {
+    position: fixed; /* Фиксированное положение */
+    top: 0;
+    left: -100vw; /* Начальное положение за пределами экрана */
+    width: 100vw; /* Ширина меню */
+    height: 100%; /* Полная высота окна */
+    background-color: #fff; /* Цвет фона */
+    transition: left 0.3s ease; /* Анимация при перемещении */
+    z-index: 1000; /* Убедитесь, что меню поверх других элементов */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+    .burger_info_nav.active {
+        left: 0; /* Когда класс active, меню появляется */
+    }
+
+    .burger_info_nav .topper {
+        /* align-content: center;
+    height: 20%; */
+
+        display: flex;
+        align-items: center; /* Центровка по вертикали */
+        justify-content: space-between; /* Пространство между элементами */
+        padding: 10px; /* Небольшой отступ */
+    }
+
+    .burger_info_nav .header_logo {
+        height: unset;
+    }
+
+.close-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px; /* Размер шрифта для крестика */
+    cursor: pointer;
+    color: #000; /* Цвет кнопки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .close-button::before {
+        font-size: 40px;
+        color: #000;
+        content: '✖'; /* Заменяем текст на символ крестика */
+    }
+
+.burger_info_nav ul {
+    list-style-type: none; /* Убираем точки Список */
+    padding: 0; /* Убираем отступы */
+    margin: 0;
+}
+
+    .burger_info_nav ul li {
+        margin-bottom: 10px; /* Расстояние между элементами списка */
+    }
+
+        .burger_info_nav ul li a {
+            font-size: 25px; /* Размер шрифта */
+            text-decoration: none; /* Убираем подчеркивание */
+            color: #000; /* Цвет текста */
+        }
+
+.burger_info_nav .header_info_nav {
+    padding-bottom: 10px;
+}
+
+.burger_links {
+    border-top: 2px black solid;
+    background-color: transparent;
+}
+
+    .burger_links .footer_social {
+        background-color: transparent;
+        justify-content: start;
+        padding: 10px;
+        padding-left: 0px;
+    }
+
+
+        /* .footer_social
+{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: #134a44;
+    padding: 40px;
+} */
+        .burger_links .footer_social:before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 1px;
+            top: 50%;
+        }
+
+        .burger_links .footer_social a {
+            z-index: 1;
+        }
+
+    .burger_links .footer_social_inst {
+        background: url(/img/svg/blackicons8-instagram.svg);
+        background-size: cover;
+        height: 23px;
+        width: 23px;
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+
+    .burger_links .footer_social_facebook {
+        background: url(/img/svg/blackicons8-facebook.svg);
+        background-size: cover;
+        height: 23px;
+        width: 23px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .burger_links .footer_social_x {
+        background: url(/img/svg/blackicons8-твиттер.svg);
+        background-size: cover;
+        height: 23px;
+        width: 25px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .burger_links .footer_social_youtube {
+        background: url(/img/svg/blackicons8-youtube-logo.svg);
+        background-size: cover;
+        height: 23px;
+        width: 29px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+@media (max-width: 992px) {
+    .wrapper {
+        width: unset;
+    }
+
+    .products .wrapper {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .products_viewall .wrapper {
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .slider-container {
+        height: auto;
+    }
+
+    .burger-menu {
+        display: block; /* Показать бургер-иконку на малых экранах */
+    }
+
+    .milk_color_container_adapt {
+        display: block;
+    }
+
+    .top_header_adapt {
+        display: block;
+    }
+
+    .milk_color_container {
+        display: none;
+    }
+
+    .top_header {
+        display: none;
+    }
+
+    .top_header_search {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 5px;
+    }
+
+    .collapse-nav {
+        display: none; /* Скрыть меню по умолчанию */
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+        .collapse-nav.active {
+            display: flex; /* Показать меню при активации */
+        }
+
+        .collapse-nav ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+            .collapse-nav ul li {
+                margin: 10px 0;
+            }
+
+    .title_card {
+        margin-bottom: 5px;
+    }
+
+    .header_info_nav {
+        padding-right: 30px;
+    }
+
+    .product-box {
+        justify-content: space-between;
+        gap: 1.5vw;
+        /* gap:unset; */
+        /* gap:5px; */
+        flex-wrap: wrap;
+    }
+
+    .product-box-1 {
+        justify-content: space-between;
+        gap: 1.5vw;
+        /* gap:unset; */
+        /* gap:5px; */
+        flex-wrap: wrap;
+    }
+
+    .product {
+        max-width: none;
+        width: 49%;
+    }
+
+
+    .yearOfreading {
+        font-size: 24px;
+        flex-wrap: wrap;
+    }
+
+    .container_add {
+        width: 100%;
+    }
+
+    .add_container {
+        flex-wrap: wrap;
+    }
+
+    .bg_green {
+        justify-content: start;
+        width: 100%;
+    }
+
+    .bg_salmon {
+        width: 100%;
+    }
+
+    .krista_halverson .wrapper {
+        display: block;
+    }
+
+    .description_container {
+        max-width: 100%;
+    }
+
+    .krista_halverson .book_container {
+        width: 100%;
+    }
+
+    .book_container .product {
+        width: 50%;
+    }
+
+    .quote_history {
+        width: auto;
+    }
+
+    .add_container .category_card img {
+        max-width: 20vw;
+        max-width: calc(120px + 1vw);
+    }
+
+    .bg_green .event_card {
+        font-size: 18px;
+    }
+
+    .title_card {
+        font-size: 18px;
+    }
+
+    .event_card {
+        display: block;
+    }
+
+    .theme {
+        font-family: "Windsor E1";
+        max-width: 900px;
+        max-height: 300px;
+        font-size: clamp(50px, 5vw, 150px);
+        overflow: hidden;
+    }
+
+    .tracker {
+        font-size: 10px;
+        object-fit: contain; /* объект должен содержать содержимое, а не fit */
+        white-space: nowrap; /* предотвращает перенос текста */
+        overflow: hidden; /* скрывает текст, выходящий за пределы блока */
+        text-overflow: ellipsis;
+    }
+}

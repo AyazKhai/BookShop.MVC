@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShop.Common.DataContext.Postgress", "BookShop.Common.DataContext.Postgress\BookShop.Common.DataContext.Postgress.csproj", "{53EEE8A4-A546-4B25-A135-1ACB8A947496}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookShop.Common.Models.Postgress", "..\BookShop.Common.Models.Postgress\BookShop.Common.Models\BookShop.Common.Models.Postgress.csproj", "{F5235A44-DE1D-4CEA-B6C2-C8646256F96E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53EEE8A4-A546-4B25-A135-1ACB8A947496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EEE8A4-A546-4B25-A135-1ACB8A947496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EEE8A4-A546-4B25-A135-1ACB8A947496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EEE8A4-A546-4B25-A135-1ACB8A947496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5235A44-DE1D-4CEA-B6C2-C8646256F96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5235A44-DE1D-4CEA-B6C2-C8646256F96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5235A44-DE1D-4CEA-B6C2-C8646256F96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5235A44-DE1D-4CEA-B6C2-C8646256F96E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {081A64DC-7C28-43AC-8E18-C45367B2A96D}
+	EndGlobalSection
+EndGlobal

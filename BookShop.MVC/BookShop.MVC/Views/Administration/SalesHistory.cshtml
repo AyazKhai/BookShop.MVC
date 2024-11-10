@@ -1,0 +1,118 @@
+﻿@model List<OrderInfo>
+<head>
+    <link rel="stylesheet" href="~/css/adder.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+
+
+<h2>История заказов</h2>
+
+
+<div class="salesHistory">
+    <form asp-action="SalesHistory" method="get">
+        <div>
+            <label>Сортировать по:</label>
+            <select name="sortField" class="form-control">
+                @* Устанавливаем атрибут selected с помощью условия перед самим элементом *@
+                @{
+                    var currentSortField = ViewBag.CurrentSortField as string;
+                }
+                <option value="date" selected="@(currentSortField == "date" ? "selected" : null)">Дата</option>
+                <option value="price" selected="@(currentSortField == "price" ? "selected" : null)">Цена</option>
+                <option value="name" selected="@(currentSortField == "name" ? "selected" : null)">Имя</option>
+                <option value="surname" selected="@(currentSortField == "surname" ? "selected" : null)">Фамилия</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Порядок сортировки:</label>
+            <select name="sortOrder" class="form-control">
+                @{
+                    var currentSortOrder = ViewBag.CurrentSortOrder as string;
+                }
+                <option value="asc" selected="@(currentSortOrder == "asc" ? "selected" : null)">По возрастанию</option>
+                <option value="desc" selected="@(currentSortOrder == "desc" ? "selected" : null)">По убыванию</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn_green_short">Сортировать</button>
+    </form>
+
+</div>
+
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Номер заказа</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Email</th>
+                <th>Адрес</th>
+                <th>Метод платежа</th>
+                <th>Метод доставки</th>
+                <th>Цена</th>
+                <th>Дата</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.FirstName</td>
+                    <td>@order.LastName</td>
+                    <td>@order.Email</td>
+                    <td>@order.Address</td>
+                    <td>@order.PaymentMethod</td>
+                    <td>@order.ShippingMethod</td>
+                    <td>@order.TotalPrice</td>
+                    <td>@order.OrderDate</td>
+                    <td>
+                        <button class="btn_green_short" onclick="toggleCartItems(@order.OrderId)">Показать товары</button>
+                        <div id="cartItems-@order.OrderId" style="display:none;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Название книги</th>
+                                        <th>Автор</th>
+                                        <th>Цена</th>
+                                        <th>Количество</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in order.CartItems)
+                                    {
+                                        <tr>
+                                            <td>@item.Title</td>
+                                            <td>@item.AuthorName</td>
+                                            <td>@item.Price €</td>
+                                            <td>@item.Quantity</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        function toggleCartItems(orderId) {
+            var cartItemsDiv = document.getElementById("cartItems-" + orderId);
+            if (cartItemsDiv.style.display === "none") {
+                cartItemsDiv.style.display = "block";
+            } else {
+                cartItemsDiv.style.display = "none";
+            }
+        }
+    </script>
+
+
+}

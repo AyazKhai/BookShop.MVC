@@ -1,0 +1,646 @@
+﻿
+@{
+    ViewData["Title"] = "Shakespeare and Company";
+    // Book[]? books = ViewData["books"] as Book[];
+}
+
+@* <div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+
+<main>
+    <div class="start_addv">
+        <div class="slider-container">
+            <div class="slider">
+                <img src="/img/svg/BANNER.webp" alt="Image 1">
+                <img src="/img/svg/BANNER_New-Homepage_Banner_Desktop_Facade_1980x526.webp" alt="Image 2">
+                <img src="/img/svg/horizons-1 (1).webp" alt="Image 3">
+            </div>
+            <button class="prev"><</button>
+            <button class="next">></button>
+        </div>
+        <script src="~/js/script.js"></script>
+        <div class="store_label">
+
+            <div class="wrapper">
+                <li id="Independent_Bookstore">Independent Bookstore</li>
+            </div>
+        </div>
+    </div>
+    <!-- первый ряд 4 книг с каткгориями -->
+    <div class="products">
+        <div class="wrapper">
+            <div class="product-box">
+
+                <div class="product">
+                    <div class="category">
+                        <img src="./img/svg/books 3.svg" alt="Books">
+                        <p>Books</p>
+                        <a href="#!"  class="title">VIEW ALL</a>
+                    </div>
+
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/intermezzo.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="/product_page.html">Intermezzo</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Sally Rooney</a>
+                    </div>
+
+
+                    <span>27 €</span>
+                    <a asp-controller="Cart" asp-action="AddToCart">
+                        <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+                    </a>
+                   
+                </div>
+                <div class="product">
+                    <div class="category">
+                        <img src="./img/svg/subscription.svg" alt="Yearly Subscription">
+                        <p>Yearly Subscription</p>
+                        <a href="#!" class="title">VIEW ALL</a>
+                    </div>
+                    <div class="product-container">
+                        <img src="./img/boksCards/yearofreading.jpg" alt="Product Background" class="product-background-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">
+                            Year of Reading bundle by Shakespeare and Company
+                        </a>
+                    </div>
+
+
+                    <span>285 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="category">
+                        <img src="./img/svg/rarebooks.svg" alt="Books">
+                        <p>Rare Books</p>
+                        <a href="#!" class="title">VIEW ALL</a>
+                    </div>
+                    <div class="product-container">
+                        <img src="./img/boksCards/james-joyce yearbook.webp" alt="Product Background" class="product-background-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">A James Joyce Yearbook</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">James Joyce , Maria Jolas</a>
+                    </div>
+
+
+                    <span>120 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="category">
+                        <img src="./img/svg/mwrch.svg" alt="Gifts & Merch">
+                        <p>Gifts & Merch</p>
+                        <a href="#!" class="title">VIEW ALL</a>
+                    </div>
+                    <div class="product-container">
+                        <img src="./img/boksCards/puzzle S&Co.jpg " alt="Product Background" class="product-background-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Puzzle S&Co - An Afternoon at the Bookshop</a>
+                    </div>
+
+                    <span>39 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+
+
+    <!-- цитата -->
+    <div class="quote">
+
+        <div class="quote_text">
+            <p>"Shakespeare is the happy hunting ground of all minds that have lost their balance."</p>
+        </div>
+        <a href="#!">James Joyce, Ulysses</a>
+    </div>
+
+    <!--второй ряд 2 книг с категорией -->
+    <div class="products_viewall">
+        <div class="wrapper">
+            <div class="category">
+                <img src="/img/svg/mwrch.svg" alt="merch">
+                <p>Gifts & Merchandise</p>
+                <a href="#!" class="title">VIEW ALL</a>
+            </div>
+            <div class="product-box">
+
+                <div class="product">
+
+                    <div class="product-container">
+                        <img src="./img/boksCards/Marble-with-model-copie.jpg" alt="Product Background" class="Big-product-background-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Le Sac Shopping</a>
+                    </div>
+
+                    <span>18 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+
+                    <div class="product-container">
+                        <img src="./img/boksCards/This Sporting Life, Non-Fiction Bundle.jpg" alt="Product Background" class="Big-product-background-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">This Sporting Life, Non-Fiction Bundle</a>
+                    </div>
+
+                    <span>66 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- третий ряд с 4 книгами -->
+    <div class="products_viewall">
+        <div class="wrapper">
+            <div class="category">
+                <img src="./img/svg/selection.svg" alt="New Titles">
+                <p>New Titles</p>
+                <a href="#!" class="title">VIEW ALL</a>
+            </div>
+            <div class="product-box">
+                <div class="product">
+
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/Nobody's Empire.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Nobody's Empire</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Stuart Murdoch</a>
+                    </div>
+
+
+                    <span>27 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/Journeys and Flowers.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Journeys and Flowers</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Merce Rodoreda</a>
+                    </div>
+
+
+                    <span>14 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/The Mortal and Immortal Life of the Girl from Milan.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">The Mortal and Immortal Life of the Girl from Milan</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Domenico Starnone</a>
+                    </div>
+
+
+                    <span>21 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/Suggested in the Stars.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Suggested in the Stars</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Yoko Tawada</a>
+                    </div>
+
+
+                    <span>18 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+            </div>
+            <div class="viewall_container">
+                <button class="btn_aviewall">view all booker prize 2024</button>
+            </div>
+
+        </div>
+
+
+    </div>
+    </div>
+    <!-- четвертый ряд с 4 книгами -->
+    <div class="products_viewall">
+        <div class="wrapper">
+            <div class="category">
+                <img src="./img/svg/selection.svg" alt="Booker Prize 2024">
+                <p>Booker Prize 2024</p>
+                <a href="#!" class="title">VIEW ALL</a>
+            </div>
+            <div class="product-box">
+                <div class="product">
+
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/Dracula.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Dracula</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Bram Stoker</a>
+                    </div>
+
+
+                    <span>23 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/Monstrilio.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Monstrilio</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Gerardo Samano</a>
+                    </div>
+
+
+                    <span>16 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/The Ex Hex.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">The Ex Hex</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Erin Sterling</a>
+                    </div>
+
+
+                    <span>14 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/A Witch's Guide to Fake Dating a Demon.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">A Witch's Guide to Fake Dating a Demon</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Sarah Hawley</a>
+                    </div>
+
+
+                    <span>14 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+            </div>
+            <div class="viewall_container">
+                <button class="btn_aviewall">view all booker prize 2024</button>
+            </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+    <!-- реклама/промоакции -->
+    <div class="yearOfreading">
+        <div class="container_add newsletter-section">
+            <p class="theme">NEWSLETTER</p>
+            <p class="subtitle">Sign-up for our newsletter</p>
+            <p class="description">Sign up to our monthly newsletter for information about the bookshop, upcoming events and our latest recommendations.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="EMAIL" required>
+                <button type="submit">SIGN-UP</button>
+            </form>
+        </div>
+        <div class="container_add year-section">
+            <p class="theme">A YEAR OF READING</p>
+
+            <p class="subtitle">with Shakespeare and Company</p>
+            <p class="description">12 titles from among our booksellers' favourite contemporary fiction, new non-fiction, thought-provoking poetry and overlooked classics; accompanied by a variety of Shakespeare and Company surprises.</p>
+            <button class="details-button">MORE DETAILS</button>
+        </div>
+    </div>
+
+    <!-- пятый ряд с 4 книгами -->
+    <div class="products_viewall">
+        <div class="wrapper">
+            <div class="category">
+                <img src="./img/svg/selection.svg" alt='Our "Coups de Cœur"'>
+                <p>'Our "Coups de Cœur"'</p>
+                <a href="#!" class="title">VIEW ALL</a>
+            </div>
+            <div class="product-box">
+                <div class="product">
+
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/Blue Ruin.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Blue Ruin</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Hari Kunzru</a>
+                    </div>
+
+
+                    <span>21 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/Alien Daughters Walk Into the Sun.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Alien Daughters Walk Into the Sun</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Jackie Wang</a>
+                    </div>
+
+
+                    <span>23 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/Not for the Faint of Heart.webp" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Not for the Faint of Heart</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Lex Croucher</a>
+                    </div>
+
+
+                    <span>13 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                        <img src="./img/boksCards/The Diaries of Franz Kafka.jpg" alt="Product Image" class="product-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">The Diaries of Franz Kafka</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Franz Kafka</a>
+                    </div>
+
+
+                    <span>21 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+            </div>
+            <div class="viewall_container">
+                <button class="btn_aviewall">view all booker prize 2024</button>
+            </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+    <!-- реклама/промоакции -->
+    <div class="add_container">
+        <div class="bg_green">
+            <div class="content-left">
+                <div class="category_card">
+                    <img src="./img/svg/microphone.svg" alt="microphone">
+                    <p>Events</p>
+                </div>
+                <div class="event_card">
+                    <div class="text_content">
+                        <p class="description">10 October2024, 19:00</p>
+                        <div class="title_card">
+                            <a href="#!">Colombe Schneck on The Paris Trilogy</a>
+                        </div>
+                        <p class="description">
+                            Join Colombe Schneck, and translator Natasha Lehrer, to discuss Schneck’s frank and exhilarating The Paris Trilogy.
+                        <p class="bald-text">Free & open to all. Places limited. Arrive early to avoid disappointment.</p>
+
+                        </p>
+                    </div>
+                    <div class="logo">
+                        <img href="" src="./img/add_pic/Colombe-Schneck_c-JF-Paga.webp" alt='Our "Coups de Cœur"'>
+
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="event_card">
+                    <div class="text_content">
+                        <p class="description">15 October 2024 , 14:00 - 16:00</p>
+                        <div class="title_card">
+                            <a href="#!">**POSTPONED** Signing: Matt Haig</a>
+                        </div>
+                        <p class="description">
+                        <p class="bald-text">**POSTPONED** Due to circumstances beyond our control this signing has been postponed. We will let you know as soon as a new date is confirmed. Apologies for the inconvenience.</p>
+                        </p>
+                    </div>
+                    <div class="logo">
+                        <img href="" src="./img/add_pic/bold_man.webp" alt='Our "Coups de Cœur"'>
+                    </div>
+
+                </div>
+                <div class="reserse_btn">
+                    <button class="btn_event_card">VIEW ALL</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bg_salmon">
+            <div class="content-right">
+                <div class="category_card">
+                    <img src="./img/svg/microphone.svg" alt="podcasts">
+                    <p>Podcasts</p>
+                </div>
+                <div class="title_card">
+                    <a href="#!">Roxy Dunn on As Young As This</a>
+                </div>
+                <div class="line"></div>
+                <div class="event_card">
+                    <div class="text_content">
+
+                        <div class="title_card">
+                            <a href="#!">Poetry: Ishion Hutchinson reads from and discusses School of Instructions</a>
+                        </div>
+                    </div>
+                    <div class="logo">
+                        <img href="" src="./img/add_pic/roxy.webp" alt='Roxy'>
+
+                    </div>
+                </div>
+
+                <div class="line"></div>
+                <div class="event_card">
+                    <div class="text_content">
+                        <div class="title_card">
+                            <a href="#!">Michael Donkor on Grow Where They Fall</a>
+                        </div>
+                    </div>
+                    <div class="logo">
+                        <img href="" src="./img/add_pic/Donkor.webp" alt='Donlor'>
+                    </div>
+
+                </div>
+                <div class="reserse_btn">
+                    <button class="btn_event_card">VIEW ALL</button>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- истрия -->
+    <div class="history_container">
+
+        <div class="wrapper">
+            <div class="category">
+                <img src="/img/svg/history.svg" height="110px" alt="merch">
+                <p>History</p>
+            </div>
+            <div class="image_history">
+                <img src="./img/add_pic/history_1.webp" alt="microphone">
+            </div>
+            <div class="quote_history">
+                "I created this bookstore like a man would write a novel, building each room like a chapter, and I like people to open the door the way they open a book, a book that leads into a magic world in their imaginations."
+            </div>
+            <div class="quote_history">
+                — George Whitman
+            </div>
+
+
+        </div>
+    </div>
+    <!-- истрия книга с описанием-->
+    <div class="krista_halverson">
+        <div class="wrapper">
+            <div class="book_container">
+                <div class="product">
+                    <div class="product-container">
+                        <img src="./img/boksCards/Paris A History of the Rag  Bone.jpg" alt="Product Background" class="product-background-image">
+                    </div>
+
+                    <div class="title">
+                        <a href="#!">Shakespeare and Company, Paris: A History of the Rag & Bone</a>
+                    </div>
+                    <div class="author">
+                        <a href="#!">Krista Halverson</a>
+                    </div>
+
+
+                    <span>35 €</span>
+                    <button class="btn_addToCart"><img src="/img/svg/cart 2.svg">ADD TO CART</button>
+
+                </div>
+            </div>
+
+            <div class="description_container">
+                <div class="description">
+                    Shakespeare and Company is an independent, English-language bookshop located on the banks of the Seine, opposite Notre-Dame. It has been a meeting place for writers and readers in Paris for more than seventy years.
+                </div>
+                <div class="description">
+                    In 1951, Shakespeare and Company was opened by George Whitman on rue de la Bûcherie. It was given its name by Sylvia Beach, who called the shop the “spiritual successor” to her own. Beach’s bookstore, on rue de l’Odéon (1919-1941), had been a gathering place for the great expat writers of the time, including Hemingway, Stein, Fitzgerald, Eliot, and Pound—and it was Beach who first published Joyce’s Ulysses, when no one else dared.
+                </div>
+                <div class="description">
+                    George’s bookstore quickly became a center for anglophone literary life in Paris. James Baldwin, William Burroughs, Anaïs Nin, Allen Ginsberg, Richard Wright, Julio Cortázar, and Henry Miller were early visitors. From the first day—writers, artists, and intellectuals were invited to sleep for free among the shelves. Since then, more than 30,000 people have stayed in the bookshop, which itself has grown from a single narrow room on the ground floor to the labyrinth of books and nooks readers know today.
+                </div>
+                <div class="description">
+                    George’s only child, Sylvia Whitman, now runs the bookshop with David Delannet, her partner in life and business. They’ve embarked on several new adventures, including adding a café, a literary festival, a writing contest, and a publishing arm. Shakespeare and Company continues to host regular literary events, which are available for free on the shop’s podcast. Guests have included Zadie Smith, Don DeLillo, Carol Ann Duffy, Colson Whitehead, Leïla Slimani, Rachel Cusk, George Saunders, Karl Ove Knausgaard, and Jeanette Winterson.
+                </div>
+                <div class="description">
+                    George’s novel, this bookshop, is today still being written by a dedicated team of booksellers and by all the people who continue to read, write, and sleep at Shakespeare and Company.
+                </div>
+                <div class="description">
+                    Thank you for your support.
+                </div>
+                <div class="viewall_container">
+                    <button class="btn_aviewall">READ ON</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</main>

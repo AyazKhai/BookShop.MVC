@@ -1,0 +1,156 @@
+.bg
+{
+    background-color: rgb(240, 240, 234);
+    
+}
+
+.bg .wrapper
+{
+
+    display: flex;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    
+    
+}
+.sign_in
+{
+    flex-direction: column;
+    /* align-items:end;
+    justify-content: end; */
+}
+.sign_in h2
+{
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family:'Swiss 721Bt-Medium';
+}
+.warning
+{
+    
+    border: 1px  solid black;
+    padding:10px;
+    background-color: white;
+    display: flex;
+    width: 50%;
+    line-height: 1.5;
+}
+.warning p
+{
+    padding-left: 5px;
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+form label {
+    margin-top: 20px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 50%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+.remember-me {
+    margin-top: 20px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    text-align: start;
+    gap: 0; /* Устанавливаем gap на 0 */
+}
+
+.remember-me input
+{
+    width: 20px;
+}
+.remember-me label {
+    margin: 0; /* Убираем любые отступы */
+    padding: 0; /* Убираем любые внутренние отступы */
+}
+
+
+button[type="submit"] {
+    width: 50%;
+    background-color: #00635d;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Swiss 721Bt-Medium';
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+button[type="submit"]:hover {
+    text-decoration: none;
+    background-color: #004c45;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #333;
+    cursor: pointer;
+}
+
+.register
+{
+    margin-top: 20px;
+    border: 1px  solid black;
+    padding:10px;
+    background-color: white;
+    height: 10%;
+    width: 50%;
+    line-height: 1.5;
+    flex-direction: column;
+}
+@media (max-width: 992px) 
+{
+    .bg .wrapper
+    {
+
+        display: block;
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 10px;
+        padding-bottom: 40px;
+        
+        
+    }
+
+    .warning
+    {
+        width: 100%;
+    }
+
+    form input {
+        width: 100%;
+    }
+    button[type="submit"] {
+        width: 100%;
+    }
+    .register
+    {
+        width: 100%;
+    }
+}

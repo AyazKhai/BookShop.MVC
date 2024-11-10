@@ -1,0 +1,39 @@
+﻿@model Book;
+
+<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+<form asp-action="UpdateBook" asp-controller="Administration" enctype="multipart/form-data" method="post">
+    <!-- Скрытое поле для передачи BookId -->
+    <input type="hidden" name="BookId" value="@Model.BookId" />
+    <input type="hidden" name="id" value="@Model.BookId" />
+    <div>
+        <label asp-for="Title">Название</label>
+        <input asp-for="Title"  class="form-control" placeholder="@Model.Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Price">Цена</label>
+        <input asp-for="Price" class="form-control" step="0.01" title="Введите корректную цену (например, 10.99)" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Isbn">ISBN</label>
+        <input asp-for="Isbn"  class="form-control" />
+        <span asp-validation-for="Isbn" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="StockQuantity">Количество на складе</label>
+        <input asp-for="StockQuantity"  class="form-control" type="number" min="0" />
+        <span asp-validation-for="StockQuantity" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="BookDescription">Описание книги</label>
+        <textarea asp-for="BookDescription" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="BookDescription" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Изменить</button>
+</form>

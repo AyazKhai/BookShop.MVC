@@ -1,0 +1,170 @@
+.bg
+{
+    background-color: rgb(240, 240, 234);
+    
+}
+
+.bg .wrapper
+{
+
+    display: flex;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    
+    
+}
+.register
+{
+    flex-direction: column;
+    /* align-items:end;
+    justify-content: end; */
+}
+.register h2
+{
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family:'Swiss 721Bt-Medium';
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+form label {
+    margin-top: 20px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 50%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+
+button[type="submit"] {
+    width: 50%;
+    background-color: #00635d;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Swiss 721Bt-Medium';
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    text-decoration: none;
+    background-color: #004c45;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #333;
+    cursor: pointer;
+}
+
+.register
+{
+    margin-top: 20px;
+    padding:10px;
+    height: 10%;
+    width: 50%;
+    line-height: 1.5;
+    flex-direction: column;
+}
+
+
+
+.sendspam {
+            width:50% ;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        
+        .box {
+            margin-top: 40px;
+            width: 25px;
+            height: 20px;
+            border: 1px solid #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        
+        .box.checked {
+            background-color: #000;
+        }
+        
+        .spam_box {
+            font-size: 12px;
+        }
+        .spam_box br{
+            font-family:'Swiss 721Bt-Medium';
+            font-size: 10px;
+        }
+        .spam_box i{
+            font-size: 12px;
+            font-family: 'EB Garmond';
+            color: #555;
+        }
+
+
+
+@media (max-width: 1200px) and (min-width:480px) 
+{
+    .register
+    {
+        width: 100%;
+    }
+    form input {
+        width: 100%;
+    }
+    
+    
+    button[type="submit"] {
+        width: 100%;
+    }  
+    .sendspam 
+    {
+        width: 100%;
+    }
+}
+
+@media(max-width: 480px)
+{
+    .register
+    {
+        width: 100%;
+    }
+    form input {
+        width: 100%;
+    }
+    
+    
+    button[type="submit"] {
+        width: 100%;
+    }   
+    .sendspam 
+    {
+        width: 100%;
+    }
+}

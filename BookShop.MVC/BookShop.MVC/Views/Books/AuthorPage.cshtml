@@ -1,0 +1,112 @@
+﻿@model Book[]
+
+@{
+
+    int counter = 0;
+    string authorsDisplay="";
+    string image = "";
+}
+@* @if ((Model is null) || (!Model.Any()))
+{
+    <p>No books were found. Try later.</p>
+    <h2>Sorry for the inconvenience</h2>
+} *@
+<h2>
+    @ViewData["Title"];
+</h2>
+
+<div class="products">
+    <div class="wrapper">
+       @if (Model == null || !Model.Any())
+        {
+            <p>No books were found. Try later.</p>
+            <h2>Sorry for the inconvenience</h2>
+        }
+        else
+        {
+            // Начинаем новый блок product-box
+            @:<div class="product-box">
+
+            foreach (var book in Model)
+            {
+                if (counter > 0 && counter % 4 == 0)
+                {
+                    // Закрыть текущий блок product-box после каждых 4 книг
+                    @:</div>
+            
+                    // Открыть новый блок product-box
+                    @:<div class="product-box">
+                }
+
+                <div class="product">
+                    <div class="product-container">
+                        
+                        @if (book.Imagelinks != null)
+                        {
+                            if (book.Imagelinks[0].Size == 1)
+                            {
+                                 <img src="@Url.Content("~/img/boksCards/" + book.Imagelinks[0].Url)" alt="Product Background" class="product-background-image" />
+                                @* <img src="@($"./img/boksCards/{book.Imagelinks[0].Url}")" alt="Product Background" class="product-background-image"> *@
+
+                            }
+                            else
+                            {
+                                 <img src="~/img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                                    <img src="@Url.Content("~/img/boksCards/" + book.Imagelinks[0].Url)" alt="Product Image" class="product-image" />
+                                    @* <img src="./img/boksCards/background.svg" alt="Product Background" class="product-background-image">
+                            <img src="@($"./img/boksCards/{book.Imagelinks[0].Url}")" alt="Product Image" class="product-image"> *@
+                            }
+                            
+                        }
+                        else
+                        {
+                             <img src="@Url.Content("~/img/boksCards/background.svg")" alt="Product Background" class="product-background-image" />
+                            <img src="@Url.Content("~/img/boksCards/book-placeholder.webp")" alt="Product Image" class="product-image" />
+                        }
+                        
+                    </div>
+
+                    <div class="title">
+                        <a asp-controller="Books" asp-action="BookPage" asp-route-id="@book.BookId">@book.Title</a>
+                    </div>
+                     <div class="author">
+                        @if (book.Authors != null)
+                            {
+                                foreach (var auth in book.Authors)
+                                {
+                                    if (auth != null) // Проверяем, что объект автора не равен null
+                                    {
+                                        var firstName = auth.FirstName ?? string.Empty; // Проверяем, что FirstName не равен null
+                                        var lastName = auth.LastName ?? string.Empty; // Проверяем, что LastName не равен null
+
+                                                    <a asp-area="" asp-controller="Books" asp-action="AuthorPage" asp-route-id="@auth.AuthorId" asp-route-name=@($"{firstName} {lastName}")>
+                                            @($"{firstName} {lastName}")
+                                        </a>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <a ></a>
+                            }
+
+                </div>
+
+                    <span>@book.Price €</span>
+                    <button class="btn_addToCart">
+                        <img src="/img/svg/cart 2.svg">ADD TO CART
+                    </button>
+                </div>
+
+                // Увеличиваем счётчик
+                counter++;
+            }
+
+            // Закрыть последний блок product-box
+            @* @:</div> *@
+        }
+        
+
+    </div>
+
+</div>

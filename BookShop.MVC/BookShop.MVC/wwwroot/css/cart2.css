@@ -1,0 +1,468 @@
+:root {
+    --main-border: 2px solid black;
+    font-family: 'Swiss 721Bt-Medium';
+}
+
+.wrapper_cart {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.Shopping_cart
+{
+  margin-top: 40PX;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+.Shopping_cart img
+{
+  margin-right: 30PX;
+  width: 3%;
+}
+
+.navi_bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    flex: 1;
+    text-align: start;
+    padding-right: 4px;
+}
+
+.step .tracker {
+    text-transform: uppercase;
+    position: relative;
+}
+
+.step .tracker::after {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-right: 2px;
+    height: 8px;
+    background-color: gray; /* Цвет прямоугольника */
+}
+
+.step.active .tracker {
+    position: relative;
+}
+
+.step.active .tracker::after {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-right: 2px;
+    height: 8px;
+    background-color: #000; /* Цвет прямоугольника */
+}
+
+.produst_order {
+    display: flex;
+    align-items: flex-start; /* Выровняет по верху */
+    width: 100%; /* Убедитесь, что контейнер достаточно широкий */
+  }   
+
+
+
+.books_collection 
+{
+    /* width: 866.66px; */
+    width: 66.33%;
+}
+.book_cart {
+    justify-content: space-between;
+
+
+    
+    margin-top: 40px;
+    display: flex;
+}
+.book_cart:first-child
+{
+    margin-top: 40px;
+}
+
+.book_info
+{
+    height: 200px;
+    /* width: 32.333%; */
+
+    width: 50%;
+    border-bottom: var(--main-border);
+}
+
+.item-info {
+    padding-top: 5px;
+    display: flex;
+    font-family: "Eb Garmond";
+}
+
+
+.item-info img {
+    object-position: left center;
+    align-items: start;
+    margin-right: 60px;
+    width: 100px;
+    height: 150px;
+    object-fit: contain; /* Изменено с cover на contain */
+}
+
+.cart_info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .item-details h2 {
+    font-size: 20px;
+    margin: 0;
+  }
+  .item-details p {
+    margin: 15px 0;
+  }
+
+.item-options {
+    height: 200px;
+    /* width: 33%; */
+    width: 50%;
+    display: flex;
+    flex-direction: column; /* Изменено с flex на column */
+   
+}
+
+
+
+.option-details {
+    display: flex;
+  }
+
+.price,
+.quantity,
+.total {
+    width: 34%;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    display: inline-block; /* Изменено для того чтобы блоки Price, Quantity и Total находились на одной строке */
+}
+
+.total {
+    border-right: var(--main-border);
+}
+.price
+{
+    border-left: var(--main-border);
+}
+
+.quantity {
+    border-left: var(--main-border);
+    border-right: var(--main-border);
+}
+
+.quantity button {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.quantitybtn {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.item-extra {
+    flex-direction: column; /* Выстраивает элементы в столбец */
+    font-size: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-top:var(--main-border) ;
+    border-right: var(--main-border);
+    border-left: var(--main-border);
+    border-bottom: var(--main-border);
+    height: 50%;
+  }
+  .item-extra input
+  {
+    flex-wrap: wrap;
+  }
+
+
+
+
+  .final_pricer
+  {
+    margin-top: 40px;
+    width: 433.33px;
+      
+  }
+  .summary-line
+  {
+    text-transform: uppercase;
+    font-size: 25px;
+    padding-top: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: var(--main-border);
+  }
+  .summary-line:last-child
+  {
+    border: none;
+  }
+  .summary-box
+  {
+    border-bottom: var(--main-border);
+    border-top: var(--main-border);
+  }
+  .navigation_bar_final .step
+  {
+    border: none;
+  }
+  
+  .tax-note
+  {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-family: "EB Garmond";
+  }
+  .proceed_to_check
+  {
+    margin-left: 7%;
+    padding-right: 7%;
+  }
+  .proceed_to_check .btn_addToCart
+  {
+    font-size: 20px
+  }
+  
+  .payment-icons {
+    margin-top: 10px;
+    justify-content: center;
+    display: flex; /* Устанавливаем flex-контейнер */
+    align-items: center; /* Выровнять по вертикали */
+    gap: 15px; /* Расстояние между иконками, при необходимости */
+  }
+  
+  .payment-icons img {
+    max-width: 85px;
+  }
+
+
+  .delete_button {
+    width: 22px;
+    height: 22px;
+    border: 1px solid black;
+    border-radius: 50%; /* Делает кнопку круглой */
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: black;
+    background-color: transparent;
+    margin-top: 15px;
+    margin-bottom: 5.3%;
+    
+  }
+  .delete_button:hover {
+    background-color: black;
+    color: white;
+  }
+
+  
+
+
+
+
+
+
+
+.order-message-container {
+    width: 66.7%;
+    display: flex;
+    border-bottom: var(--main-border); /* Общая линия */
+}
+
+.order_message, .message {
+    /* padding: 10px; */
+    flex: 1; /* Чтобы каждый элемент занимал одинаковое пространство */
+}
+
+.order_message {
+    
+    text-transform: uppercase;
+    text-align: end;
+}
+.order_message p
+{
+  padding: 10px;
+}
+
+
+.message {
+    width: 100%;
+    background-color: rgb(240, 240, 234);
+  }
+  
+  .message label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .message textarea {
+    text-transform: uppercase;
+    width: 100%;
+    height: 50px;
+    padding: 10px; /* Отступ для текста placeholder */
+    resize: vertical;
+    background-color: rgb(240, 240, 234);
+    border: none;
+    outline: none; /* Убирает рамку при фокусе */
+    box-sizing: border-box;
+}
+  .char-counter {
+    font-size: 12px;
+    text-align: right;
+    margin-top: 5px;
+    color: #666;
+}
+
+#order-message-container-adapt
+{
+  display: none;
+}
+
+.order-m
+{
+  display: none;
+}
+@media(max-width: 480px)
+{
+  .produst_order
+  {
+    display:block;
+  }
+  .book_cart
+  {
+    display: block;
+  }
+  .item-options
+  {
+    height: 50%;
+    width: 100%;
+  }
+  .produst_order
+  {
+    display:block;
+  }
+
+
+
+  .book_info
+  {
+    border-bottom: none;
+    width: 100%;
+  }
+  .item-extra
+  {
+    flex-wrap: nowrap;
+    font-size: 20px;
+  }
+  .item-options
+  {
+    height: 50%;
+  }
+  .final_pricer
+  {
+    width: 100%;
+  }
+
+  .books_collection
+  {
+    width: 100%;
+  }
+  .order-message-container
+  {
+
+    display: none;
+  }
+  #order-message-container-adapt
+  {
+    display: flex;
+    width: 100%;
+  }
+  .Shopping_cart img
+  {
+    margin-right: 30PX;
+    width: 8%;
+  } 
+}
+
+@media (max-width: 1200px) and (min-width:480px) 
+{
+  .produst_order
+  {
+    display:block;
+  }
+  .book_cart
+  {
+   
+  }
+  .final_pricer
+  {
+    width: 100%;
+  }
+  .books_collection
+  {
+    width: 100%;
+  }
+  .item-options
+  {
+    width: 100%;
+  }
+  .book_info
+  {
+    border-bottom: none;
+    width: 100%;
+  }
+  .item-extra
+  {
+    flex-wrap: nowrap;
+    font-size: 20px;
+  }
+  .item-options
+  {
+    height: 50%;
+  }
+  .order-message-container
+  {
+
+    display: none;
+  }
+  #order-message-container-adapt
+  {
+    display: flex;
+    width: 100%;
+  }
+  .Shopping_cart img
+  {
+    margin-right: 30PX;
+    width: 4%;
+  } 
+}

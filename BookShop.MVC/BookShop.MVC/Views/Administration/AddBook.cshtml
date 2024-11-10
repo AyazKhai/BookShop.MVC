@@ -1,0 +1,184 @@
+﻿@{
+    @model BookShop.Common.Models.Models.Book;
+    Author[]? authors = ViewData["authors"] as Author[];
+    Genre[]? genres = ViewData["genres"] as Genre[];
+    Publisher[]? publishers = ViewData["publishers"] as Publisher[];
+    Book[]? books = ViewData["books"] as Book[];
+    var successMessage = ViewBag.SuccessMessage as string;
+    var errorMessage = ViewBag.ErrorMessage as string;
+
+}
+<head>
+    <link rel="stylesheet" href="~/css/adder.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+
+
+
+<div class="wrapper">
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success">
+            <h2 style="color: green;">@successMessage</h2>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">
+            <h2 style="color: red;">@errorMessage</h2>
+        </div>
+    }
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert" style="color: red;"></div>
+    <form asp-action="CreateBook" enctype="multipart/form-data" method="post">
+        <div>
+            <label asp-for="Title">Title</label>
+            <input asp-for="Title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Price">Price</label>
+            <input asp-for="Price" class="form-control" step="0.01" pattern="^\d+(\.\d{1,2})?$" title="Please enter a valid price (e.g., 10.99)" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Isbn">ISBN</label>
+            <input asp-for="Isbn" class="form-control" />
+            <span asp-validation-for="Isbn" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="StockQuantity">Stock Quantity</label>
+            <input asp-for="StockQuantity" class="form-control" type="number" min="0" />
+            <span asp-validation-for="StockQuantity" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="BookDescription">Book Description</label>
+            <textarea asp-for="BookDescription" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="BookDescription" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Authors">Author</label>
+            <select name="authorid" class="form-control">
+
+                @if (authors != null && authors.Any())
+                {
+                    <option value="">Select an author</option>
+                    @foreach (var author in authors)
+                    {
+                        <option value=@author.AuthorId>@author.FirstName @author.LastName</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="Authors" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Bookgenres">Genres</label>
+            <select name="genreId" class="form-control">
+                @if (genres != null && genres.Any())
+                {
+                    <option value="">Select a genre</option>
+                    @foreach (var genre in genres)
+                    {
+                        <option value="@genre.GenreId">@genre.GenresName</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="Bookgenres" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="PublisherId">Publisher</label>
+            <select asp-for="PublisherId" class="form-control">
+                @if (publishers != null && publishers.Any())
+                {
+                    <option value="">Select a publisher</option>
+                    @foreach (var publisher in publishers)
+                    {
+
+                        <option value=@publisher.Publisherid>@publisher.Publishername</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="PublisherId" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="ImageFiles">Image</label>
+            <input asp-for="ImageFiles" type="file" class="form-control-file"
+                   accept=".jpg, .jpeg, .png, .gif, .webp, .svg" multiple="false" />
+            <span asp-validation-for="ImageFiles" class="text-danger"></span>
+        </div>
+
+        <button type="submit">Add Book</button>
+    </form>
+
+    <table>
+        <caption>
+            All books in database
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Price</th>
+                <th scope="col">Isbn</th>
+                <th scope="col">StockQuantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (books!= null && books.Any())
+            {
+                foreach (var book in books)
+                {
+                    <tr>
+                        <th scope="row">@book.Title</th>
+                        @if (book.Authors != null && book.Authors.Any())
+                        {
+                            <th scope="row">@book.Authors.FirstOrDefault().FirstName @book.Authors.FirstOrDefault().LastName </th>
+                        }
+                        else
+                        {
+                            <th scope="row"> </th>
+                        }
+                        @if (book.Bookgenres != null && book.Bookgenres.Any())
+                        {
+                            <th scope="row">@book.Bookgenres.FirstOrDefault().GenresName</th>
+                        }
+                        else
+                        {
+                            <th scope="row"> </th>
+                        }
+                        <th scope="row">@book.Price</th>
+                        <th scope="row">@book.Isbn</th>
+                        <th scope="row">@book.StockQuantity</th>
+                        <td>
+                            <form asp-controller="Administration" asp-route-id="@book.BookId" asp-action="UpdateBookView">
+                                <input type="hidden" name="bookid" value="@book.BookId" />
+                                <button type="submit"  class="btn_green">Изменить</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-controller="Administration" asp-action="DeleteBook" method="post">
+                                <input type="hidden" name="bookid" value="@book.BookId" />
+                                <button type="submit" class="btn_green">Удалить</button>
+                            </form>
+                        </td>
+                        
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+

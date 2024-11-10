@@ -1,0 +1,68 @@
+.toast {
+    background-color: #ffffff; /* Убедитесь, что фон белый */
+    border: 1px solid #ccc; /* Четкая граница */
+    border-radius: 0; /* Прямые углы */
+    box-shadow: none; /* Уберите тени */
+    opacity: 1; /* Полная непрозрачность */
+}
+
+.toast-success {
+    border-left: 5px solid #5cb85c; /* Цвет границы для успешного уведомления */
+}
+
+.toast-error {
+    border-left: 5px solid #d9534f; /* Цвет границы для ошибки */
+}
+
+.btn_green {
+    margin-top: 5px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #00635d;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #eee;
+    transition: background-color 0.3s;
+    /* Add the following styles to center the icon and text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Swiss 721Bt-Medium';
+}
+
+
+    .btn_green:hover {
+        text-decoration: none;
+        background-color: #004c45;
+    }
+
+
+.btn_green_short {
+    margin-top: 5px;
+    text-align: center;
+    display: block;
+    width: 15vw;
+    padding: 10px;
+    background-color: #00635d;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #eee;
+    transition: background-color 0.3s;
+    /* Add the following styles to center the icon and text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Swiss 721Bt-Medium';
+}
+
+
+    .btn_green_short:hover {
+        text-decoration: none;
+        background-color: #004c45;
+    }
+
+.salesHistory {
+    display:flex;
+}

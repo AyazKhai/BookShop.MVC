@@ -1,0 +1,87 @@
+﻿@{
+    @model BookShop.Common.Models.Models.Author;
+    Author[]? authors = ViewData["authors"] as Author[];
+    var successMessage = ViewBag.SuccessMessage as string;
+    var errorMessage = ViewBag.ErrorMessage as string;
+}
+<head>
+    <link rel="stylesheet" href="~/css/adder.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+
+
+
+<div class="wrapper">
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success">
+            <h2 style="color: green;">@successMessage</h2>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">
+            <h2 style="color: red;">@errorMessage</h2>
+        </div>
+    }
+
+    <form asp-action="CreateAuthor" enctype="multipart/form-data" method="post">
+        <div>
+            <label asp-for="FirstName">First Name</label>
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+
+        <div>
+            <label asp-for="LastName">Last Name</label>
+            <input asp-for="LastName"/>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+      
+        <div>
+            <label asp-for="Bio">Biography</label>
+            <textarea asp-for="Bio" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="Bio" class="text-danger"></span>
+        </div>
+
+
+        <button type="submit" class="btn_green">Add Author</button>
+    </form>
+
+    <table>
+        <caption>
+            All authors in database
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Biography</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (authors != null && authors.Any())
+            {
+                foreach (var author in authors)
+                {
+                    <tr>
+                        <th scope="row">@author.FirstName</th>
+                        <td>@author.LastName</td>
+                        <td>@author.Bio</td>
+                        <td>
+                            <form asp-controller="Administration" asp-action="DeleteAuthor" method="post">
+                                <input type="hidden" name="authorid" value="@author.AuthorId" />
+                                <button type="submit" class="btn_green">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+            
+
+        </tbody>
+    </table>
+</div>

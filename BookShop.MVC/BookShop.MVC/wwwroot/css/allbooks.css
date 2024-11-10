@@ -1,0 +1,274 @@
+.wrapper_cart {
+    max-width: 1600px;
+    margin: 0 auto; /* Центрирует сам контейнер относительно родителя */
+    display: flex; /* Устанавливает flex-контейнер для центрирования элементов */
+    justify-content: center; /* Горизонтальное центрирование содержимого */
+    align-items: center; /* Вертикальное центрирование содержимого */
+}
+
+.allbooks 
+{
+
+    margin: 30px auto 0 auto;
+}
+.allbooks .product
+{
+    /* max-width: 210px; */
+    padding-top: 0px;
+
+    flex: 1 1 calc(25% - 10px); /* Каждая книга будет занимать 25% ширины родительского элемента, учитывая отступ */
+    box-sizing: border-box; /* Учитывает padding и border в ширине элемента */
+   min-width: 300px;
+    padding: 10px;
+}
+.allbooks .product-box
+{
+    
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Это позволяет содержимому переноситься на новую строку */
+    gap: 10px; /* Задает расстояние между книгами */
+    margin-top: 40px;
+}
+.allbooks .product-box:first-child
+{
+    margin-top: 20px;
+}
+.wrap_container
+{
+    
+    max-width: 100%;
+    justify-content: center;
+    
+    /* margin: 50px auto 0 auto; */
+    display: flex;
+}
+.filter-section 
+{
+    width: 100%; /* Adjust the width as needed */
+    font-family:'Swiss 721Bt-Medium';
+    background-color: rgb(240, 240, 234);
+    padding: 10px;
+    min-height: 2000px; /* Make the container at least the full height of the viewport */
+    display: flex;
+
+}
+
+.filter-category {
+    margin-bottom: 20px;
+    
+}
+
+.filter-category h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.filter-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-category li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    /* margin-bottom: 5px; */
+    justify-content: space-between;
+    flex-direction:row;
+}
+
+.filter-category label {
+    /* display: flex;
+    align-items: start; */
+    font-size: 20px;
+    flex-direction:row;
+    cursor: pointer;
+}
+
+.filter-category input[type="radio"] {
+    font-family:'Swiss 721Bt-Medium';
+    margin-right: 15px;
+    accent-color: #000;
+}
+
+.filter-category span {
+    color: #666;
+    font-size: 18px;
+    padding-left: 30px;
+}
+
+.header_name
+{
+    width: 250px; /* Adjust the width as needed */
+    font-family:'Swiss 721Bt-Medium';
+    padding: 10px;
+    padding-left: 10px;
+    background-color: rgb(255, 251, 243 );
+    text-transform: uppercase;
+}
+
+.section_label
+{ display: flex;
+    align-items: start;
+    min-width: 1000px;
+    width: 100%;
+    max-width: 1310px;
+    justify-content: start;
+    text-align: start;
+    
+}
+#Search-label
+{
+    
+    font-size: 30px;
+    font-family:'Swiss 721Bt-Medium';
+}
+#wrap_container_left
+{
+    justify-content:unset;
+    margin-bottom: 20px;
+}
+
+.right_section
+{
+    max-width: 1665px;
+    /* max-width: 100%; */
+    flex-wrap: wrap;
+    margin-left:40px ;
+}
+.left_section
+{
+    display: none;
+}
+
+.header_search_input
+{
+    position: relative;
+    width: 80%;
+}
+.searh_bar input
+{
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(240, 240, 234);
+    
+    border: none;
+    border-bottom: 1px solid #000;
+    /* padding: 10px,16px; */
+}
+
+
+/* Updated CSS for Pagination */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the pagination */
+    gap: 10px; /* Space between buttons */
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000; /* Black border */
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px; /* Center text vertically */
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content */
+}
+
+.page-btn.active {
+    background-color: #004d43; /* Dark green background for the active button */
+    color: #fff; /* White text */
+}
+
+.page-btn:hover {
+    background-color: #004d43; /* Light grey background on hover */
+    color: #fff;
+}
+
+.prev,
+.next {
+    background-color: #f9f9f9; /* Slightly different background for arrow buttons */
+    border-radius: 4px; /* Optional: rounded corners for the arrows */
+}
+.lef_section_adapt
+{
+    display: none;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    background-color: white;
+    font-family:'EB Garmond';
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.custom-select option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    font-family:'EB Garmond';
+}
+
+
+@media (max-width: 992px) 
+{
+    .wrap_container
+    {
+        flex-direction: column;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .section_label
+    {
+        min-width: 50px;
+        justify-content: start;
+    }
+    .lef_section
+    {
+        display: none;
+    }
+
+    .lef_section_adapt
+    {
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+    }
+    .allbooks .product {
+        min-width: 200px;
+        /* max-width: 32%; */
+        padding-top: 0px;
+
+        flex: 1 1 calc(50% - 10px); /* Каждая книга будет занимать 25% ширины родительского элемента, учитывая отступ */
+        box-sizing: border-box; /* Учитывает padding и border в ширине элемента */
+    
+        padding: 10px;
+    }
+    .lef_section_adapt p
+    {
+        font-family: 'Swiss 721Bt-Medium';
+        padding: 10px;
+        font-size: 20px;
+        letter-spacing: 2.5px;
+    }
+    .right_section
+    {
+       margin-left: 0px;
+    }
+}
